@@ -1,0 +1,549 @@
+---
+title: "Salience, Wildfire and Homeprices in California"
+author: 
+  - name: Lala Ma
+    affiliations:
+      - name: University of Kentucky
+  - name: Margaret Walls
+    affiliations:
+      - name: Resources for the Future
+  - name: Matthew Wibbenmeyer 
+    affiliations:
+      - name: Resources for the Future
+  - name: Emily Joiner
+    affiliations:
+      - name: Resources for the Future
+  - name: Connor Lennon
+    affiliations:
+      - name: Bayer (Colaberry)
+subtitle: How Home-ownership choices Respond to Risk in the Wildland Urban Interface
+inverse: True
+slide-number: "h/v"
+format: 
+  revealjs:
+    theme: myformat.scss
+    auto-stretch: false
+---
+
+## Agenda
+
+<br>
+
+::: nonincremental
+-   Two deeply-intertwined papers today
+
+    -   Risk Disclosure and Home Prices: Evidence from California Wildfire Hazard Zones
+
+    -   Untitled Work on Experience and Disclosure: Sorting over Wildfire Risk In the [W]{.hi}ildland [U]{.hi}rban [I]{.hi}nterface ([WUI]{.hi})
+
+-   These papers; together, are trying to tease out how homeowners respond to wildfire risk and experience.
+:::
+
+## Human Exposure to Wildfire
+
+Two key [questions]{.hi} where we are trying to add evidence -
+
+::: incremental
+-   Do homeowners [price-in]{.hi-slate} wildfire risk when purchasing a home, and what is the risk discount?
+
+-   How does information on wildfire risk and experience drive changes in moving decisions?
+:::
+
+::: {.fragment style=".fade-in"}
+Taken together: trying to understand how information and policy are shaping the demographics of the future WUI
+:::
+
+## Homeowner Preferences Drive Damages
+
+Homeowner location choices change development patterns which are a significant component of expected future wildfire losses and management costs
+
+:::: r-stack
+![](higuera-5-2023.jpg){.fragment .fade-in-then-out height="250"}
+
+![](baylisboomhower.png){.fragment .fade-in-then-out height="300"}
+
+[[Q:]{.hi-slate} What effect does [information]{.hi-slate} have on [prices]{.hi-slate}]{.fragment .fade-in-then-out}
+
+[[Q:]{.hi} what is the [distributional incidence]{.hi} of the effect, and who responds to this information and how?]{.fragment .fade-in-then-out}
+
+[[Q:]{.hi} What does this imply for forest/housing policy going forward?]{.fragment .fade-in}
+::::
+
+::: aside
+First figure: Higuera et al. (2023)
+
+Second figure: Baylis and Boomhower (2023)
+:::
+
+# Risk Disclosure and Home Prices
+
+## Wildfire and Risk Awareness
+
+::: columns
+::: {.column width="50%"}
+1.  Escalating damages from wildfires in recent years.
+
+2.  Are potential home-buyers aware of local wildfire risk?
+
+3.  Does [information]{.hi} on these risks capitalize into property prices?
+:::
+
+::: {.column .v-center-container width="40%"}
+<br> ![](figure1_higuera2023.png){fig-align="center"}
+:::
+:::
+
+[California FHSZ disclosure requirements]{.fragment} [→ changes in home prices]{.fragment .fade-in}
+
+## Summary
+
+### [Goal]{.hi}: Use Hedonic Boundary Discontinuity Design to estimate the ATE of risk information on property prices
+
+-   Uses ZTRAX transaction data in California geographically linked to FHSZ^1^ boundary lines
+
+-   Boundary design driven by California's disclosure laws
+
+-   Homes facing disclosure requirements cost 4.3 percent less than nearby homes that do not
+
+-   These rise over time
+
+::: aside
+^1^ FHSZ: Fire Hazard Severity Zone
+:::
+
+## Related Literature
+
+1.  [Hedonics of Disaster Risk]{.hi-slate} (Rosen 1974)
+    -   Negative willingness-to-pay for wildfire risk, when risk is salient <br> [(Donovan, Champ, & Butry 2008, McCoy and Walsh 2018, Garnache 2023, Ma et al. 2023)]{.small-font}
+    -   Observed in parallel to flood risk <br> [(Hallstrom and Smith, 2005; Kousky, 2010; Bin and Landry, 2013; Gallagher, 2014)]{.small-font}
+2.  [Boundary Discontinuity Design]{.hi-slate} (Black 1999)
+    -   Risk is spatially correlated: use disclosure requirement discontinuity, smooth amentity change to identify changes from disclosure <br> [(Turner et al. 2014, Bakkensen and Ma 2020)]{.small-font}
+
+## Data
+
+::: r-stack
+::: {.fragment .fade-in-then-out}
+-   ZTRAX linked transaction and assessors data from 2015-2022
+    -   Used this period as 14 of the most destructive wildfires in state history occurred during between the start and end date.
+    -   Transactions show information on prices and signatory dates
+    -   Assessment contain property-specific hedonic characteristics (eg. bedrooms, lot square footage etc.)
+:::
+
+::: {.fragment .fade-in}
+ZTRAX linked transaction and assessors data from 2015-2022
+
+-   These transactions are then geo-located to:
+    -   FHSZ
+    -   Responsibility Area (FRA/SRA/LRA)
+    -   School District (to control for test scores)
+    -   distance to nearest Protected Area (PAD)^1^
+
+::: aside
+^1^We measure distance to PAD areas with GAP status of 1 or 2 which are permanently protected and may bring value to homeowners, versus lower strata are subject to extractive usage which likely bring less value
+:::
+:::
+:::
+
+## Data - Wildfire Hazard Disclosure
+
+[Disclosure requirements: FHSZ and Responsibility Area]{.v-center-container width="40%"}
+
+::: columns
+::: {.column width="30%"}
+-   FHSZ
+    -   Medium
+    -   High
+    -   Very High
+-   Responsibility Area
+    -   Local (LRA)
+    -   State (SRA)
+    -   Federal (FRA)
+:::
+
+::: {.column width="55%"}
+:::: r-stack
+![Map of FHSZ in california](map_fhsz.png)
+
+![Map of FHSZ in california](sd_county.png)
+::::
+:::
+
+:::
+
+## California Wildfire Hazard Disclosure Laws
+
+<br>
+
+:::: r-stack
+
+:::{.fragment .fade-out}
+
+Table: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
+
+|                                   | None | Medium | High | Very high |
+|-----------------------------------|------|--------|------|-----------|
+| Local Responsibility Area (LRA)   | No   | No     | No   | Yes       |
+| State Responsibility Area (SRA)   | No   | Yes    | Yes  | Yes       |
+| Federal Responsibility Area (FRA) | No   | No     | No   | No        |
+
+:::
+
+:::{.fragment .fade-in-then-out}
+
+Table: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
+
+|                                   | None | Medium | High | Very high  |
+|-----------------------------------|------|--------|------|-----------|
+| Local Responsibility Area (LRA)   | No   | [No]{.hi-slate}    | No   | Yes       |
+| State Responsibility Area (SRA)   | No   | [Yes]{.hi}   | Yes  | Yes       |
+| Federal Responsibility Area (FRA) | No   | No     | No   | No        |
+
+:::
+
+:::{.fragment .fade-in}
+
+Table: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
+
+|                                   | None | Medium | High | Very high |
+|-----------------------------------|------|--------|------|-----------|
+| Local Responsibility Area (LRA)   | No   |   No   | [No]{.hi-slate}   | Yes       |
+| State Responsibility Area (SRA)   | No   |  Yes | [Yes]{.hi}   | Yes       |
+| Federal Responsibility Area (FRA) | No   | No     | No   | No        |
+
+::: aside
+[fixed [risk]{.hi-slate}, variable [risk information]{.hi}]{.fragment}
+:::
+
+:::
+
+::::
+
+## Model: Naive Hedonic
+
+$$
+\begin{equation}
+    ln(P_{i,t}) = \alpha + \beta X_{i,t} + \gamma Z_{i,t} + \delta W_{i,t}  + \nu_{t} + \epsilon_{i,t} 
+\end{equation}
+$$
+
+::: {.column .v-center-container width="10%"}
+<br>
+:::
+
+::: {.column .v-center-container width="30%"}
+[Indices]{.hi-slate}
+
+-   $i$: Property
+-   $t$: Time
+:::
+
+::: {.column .v-center-container width="45%"}
+[Variables]{.hi-slate}
+
+-   $ln(P_{i,t})$: Log price
+-   $X_{i,t}$: Property Characteristics
+-   $Z_{i,t}$: Neighborhood/Spatial Characteristics
+-   $W_{i,t}$: Wildfire hazard
+:::
+
+## Model: Naive Hedonic
+
+$$
+\begin{equation}
+    ln(P_{i,t}) = \alpha + \beta X_{i,t} + \gamma Z_{i,t} + \delta W_{i,t}  + \nu_{t} + \epsilon_{i,t} 
+\end{equation}
+$$ Two primary identification threats
+
+::: columns
+::: {.column width="40%"}
+[1 Information]{.hi-slate}
+
+-   $W_{i,t}$ will capture both wildfire hazard and awareness of this hazard on the individual level.
+
+-   Leads to attenuated $\delta$
+:::
+
+::: {.column width="40%"}
+[2 Omitted Variables Bias]{.hi-slate}
+
+-   to avoid, we require
+
+    -   Perfectly measured $Z_{i,t}$
+
+    -   Exact functional mapping from $f(Z_{i,t}) \to ln(P_{i,t})$
+
+    -   $P(W_{i,t}, \epsilon_{i,t}|Z_{i,t}) = 0\ \forall\ \{W_{i,t}, P_{i,t},Z_{i,t}\} \in \mathcal{D}$
+:::
+:::
+
+::: aside
+$\mathcal{D}$: Universe of all transactions
+:::
+
+## Model: Boundary Discontinuity
+
+$$
+\begin{gather}
+ln(P_{i,t}) = \alpha + \beta X_{i,t} + \gamma Z_{i,t} + \delta Regulated_{i,t}  + \nu_{c,t} + \nu_{g} + \eta_{i} + \epsilon_{i,t}  \\
+\forall\ i \in \mathcal{D}\ s.t. \\
+FHSZ_{i} = High\\
+min(dist(i,bnd)) < Bkm \ \forall\ bnd \in \ BoundaryLine
+\end{gather}
+$$
+
+::: {.column width="10%"}
+<br>
+:::
+
+::: {.column .v-center-container width="30%"}
+[New Indices]{.hi-slate}
+
+-   $c$: County
+-   $g$: Grid Cell^1^
+:::
+
+::: {.column .v-center-container width="45%"}
+[New Variables]{.hi-slate}
+
+-   $v_g$: Grid Cell Fixed Effects
+-   $v_{c,t}$: County Time Trend
+-   $Regulated_{i,t}$: Property is mandated discloser
+:::
+
+::: aside
+^1^: Grid is grid of $250m^2$ cells
+
+$\mathcal{D}$: Universe of all transactions
+:::
+
+## Model: Boundary Discontinuity
+
+$$
+\begin{gather}
+ln(P_{i,t}) = \alpha + \beta X_{i,t} + \gamma Z_{i,t} + \delta Regulated_{i,t}  + \nu_{c,t} + \nu_{g} + \eta_{i} + \epsilon_{i,t}  \\
+\forall\ i \in \mathcal{D}\ s.t. \\
+FHSZ_{i} = High\\
+min(dist(i,bnd)) < Bkm \ \forall\ bnd \in \ BoundaryLine
+\end{gather}
+$$
+
+::: r-stack
+::: {.fragment .fade-out}
+-   Fire risk: Rather than estimate wildfire risk's hedonic value directly, we condition the data on a categorical risk^1^
+    -   focus on [discontinuity]{.hi-slate} in [information]{.hi-slate} to estimate LATE of information shock, $\delta$, within category of risk
+:::
+
+::: {.fragment .fade-in}
+-   $Z_{i,t}$: PAD distance, school district - these either may follow SRA/LRA boundaries or vary monotonically across those boundaries
+-   $X_{i,t}$: Control for property characteristics
+:::
+:::
+
+::: aside
+^1^Focus on High Risk categories in SRA vs LRA - VHFHSZ disclosure in LRA were not uniformly adopted
+:::
+
+## Results: Southern California
+
+|              | 10km     | 8km      | 6km     | 4km      | 1km        |
+|--------------|----------|----------|---------|----------|------------|
+| Regulated    | -.0253\* | -.0267\* | -.0248  | -.0343\* | -.0402\*\* |
+|              | (.0121)  | (.0121)  | (.0131) | (.0151)  | (.0154)    |
+|              |          |          |         |          |            |
+| Observations | 139,195  | 138,052  | 125,789 | 98,035   | 72,967     |
+| R^2^         | 0.799    | 0.800    | 0.807   | 0.815    | 0.821      |
+|              |          |          |         |          |            |
+
+: Boundary Discontinuity Price Regressions, High FHSZ
+
+## Results: Northern California
+
+|              | 10km    | 5km     | 1km     |
+|--------------|---------|---------|---------|
+| Regulated    | -.00729 | -.00308 | -.0229  |
+|              | (.0187) | (.0194) | (.0221) |
+|              |         |         |         |
+| Observations | 49,668  | 44,116  | 19,892  |
+|              |         |         |         |
+
+<br>
+
+[Northern California:]{.hi-slate} Not significant, and smaller estimates.
+
+-   Fewer transactions
+-   More variability across boundaries
+
+## Results: Over Time
+
+[... we're going to come back to this]{.fragment .fade-in .hi-slate}
+
+![Boundary Effects, by Year](bdd_byyear.png){width="60%"}
+
+## Discussion
+
+# Interlude
+
+## Revisiting Motivating Questions
+
+Homeowner location choices change development patterns which are a significant component of expected future wildfire losses and management costs
+
+::: {.fragment .fade-in-then-semi-out .center}
+[Q:]{.hi-slate} What effect does [information]{.hi-slate} have on [prices]{.hi-slate}?
+
+Answer - negative shock to sale price, at least in Southern California
+:::
+
+::: {.fragment .fade-in .center}
+[Q:]{.hi} what is the [distributional incidence]{.hi} of the effect, and who responds to this information and how?
+:::
+
+::: {.fragment .fade-in .center}
+[Q:]{.hi} What does this imply for forest/housing policy going forward?
+:::
+
+<br>
+
+::: {.fragment .fade-in .center}
+[Intention:]{.hi} Use a sorting model approach to help understand how this information effect manipulates location choice.
+:::
+
+# \[Untitled Sorting Project\]
+
+## Observational Data
+
+Higher-risk homes in western states usually have higher property values, and thus higher prices.
+
+![Wibbenmeyer & Robertson, 2022](wibbenmeyer_robertson.png){width="90%"}
+
+## Summary: Approach
+
+[Goal: Estimate responsiveness of utility and choices to wildfire hazard, across income, individuals' fire experience and location heterogeneity]{.hi-slate}
+
+-   Uses ZTRAX transaction and assessment data, linked to home mortgage records from the HMDA dataset across all of California.
+
+-   Using name-matching across mortgage documents, build a historical record for each buyer of the home they moved from (origin home) and to (focal home)
+
+-   Design: BLP sorting model with:
+
+    -   choices distinguished by wildfire disclosure requirements
+    -   individual heterogeneity with past wildfire experience.
+
+## Summary: Results
+
+[Goal: Estimate responsiveness of utility and choices to wildfire hazard, across income, individuals' fire experience and location heterogeneity]{.hi-slate}
+
+::: fragment
+-   [WTP for wildfire risk:]{.hi-slate}
+    -   Buyers with [higher]{.hi} income receive more disutility from fire risk when risk is disclosed than [lower-income]{.hi-slate} buyers
+:::
+
+::: fragment
+-   [Information Shock:]{.hi-slate}
+    -   Buyers with [previous experience]{.hi} with wildfire experience receive more disutility from fire risk when risk is disclosed than [less-experienced]{.hi-slate} buyers
+:::
+
+## Model: Choice Set
+
+- Discrete choice, residential home-purchase sorting model [(Bayer et al., 2007, 2009; Klaiber and Phaneuf,
+2010; Kuminoff et al. 2013)]{.small-font}
+
+- Household (HH) $i$ chooses neighborhood $d^i_t \in \{1 \dots J\}$
+  - If HH moves, incurs financial moving cost (FMC) based on prior choice, $d^i_{t-1}$
+  - If HH stays, avoids moving cost, and $d^i_{t} = d^i_{t-1}$
+
+<hr style="height:10px; visibility:hidden;" />
+
+
+- Neighborhood choice ($j$) is a combination of...
+  - [Spatial Location]{.hi-slate}: County, Nearest FHSZ boundary segment
+  - [Regulation Information]{.hi-slate}: Disclosure requirement, FHSZ
+
+## Model: Utility
+
+Household $i$'s indirect utility of choosing a location j at time t is given by
+
+:::{.small-font}
+
+$$
+V_{j,t}^i = X'_{1j,t}\alpha_{X_1} - \alpha_{C}C_{J,t} + \xi_{j,t} + X'_{2j,t}\alpha^i_{X_2} + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i
+$$
+:::
+
+Where preference heterogeneity shows up in...
+
+:::{.small-font}
+
+$$
+X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\limits_{\gamma = 0}^{1}\sum\limits_{k=1}^{4}1[\gamma^i = \gamma] \cdot \alpha_{\gamma,k,X_2}Q_k^i
+$$
+:::
+
+:::: r-stack
+
+:::{.fragment .fade-out}
+- $X_{1j,t} =$ House/neighborhood attributes
+- $P_{jt} =$ Flow cost of living in location j, based on transaction price
+- $X_{2jt} =$ Attributes for which HH have heterogenous preferences
+- $\xi_{jt} =$ Choice-specific unobserved factors
+- $FMC(d_0^i) =$ 6% of sale price/value for prior home
+:::
+
+:::{.fragment .fade-in}
+- $\epsilon_{jt}^i =$ EVD 1, idiosyncratic term
+- $Q^i_k =$ Income quartile
+- $\gamma^i =$ (Binary) grower has past experience with wildfire
+  - Base: $Q^i_k = 1, \gamma^i = 0$
+  
+:::
+
+::::
+
+## Model: Decomposition
+
+## Model: Choice Probabilities
+
+## Estimation
+
+## Identification
+
+## Identification - FMC Endogeneity
+
+## Summary Statistics
+
+## Results: Preferences for Wildfire Variables
+
+::: columns
+
+:::{.column width='40%'}
+1
+:::
+
+:::{.column width='40%'}
+2
+:::
+
+:::
+
+##
+```{=latex}
+\begin{table}
+\begin{tabular}{lcccccccc} 
+& \multicolumn{4}{c}{No Fire Experience} & \multicolumn{4}{c}{Fire Experience}   \\\cmidrule(lr){2-5}\cmidrule(lr){6-9} 
+& Base& Q2 & Q3 & Q4 & Q1 & Q2 & Q3 & Q4 \\ \hline
+\\[-.3cm]   
+\\ 
+
+regulated & 1003.15 & 63.90 & 170.92 & 323.07 & 45.08 & 195.62 & 334.58 & 456.19 \\                     
+ & 303.42 & 12.84 & 12.54 & 12.54 & 41.07 & 30.76 & 25.84 & 23.07 \\                                    
+lnwhp & 1.85 & -25.56 & -39.42 & -67.43 & -2.37 & -4.92 & -2.86 & -36.08 \\                             
+ & 38.68 & 2.09 & 2.21 & 2.44 & 6.67 & 6.23 & 5.99 & 6.53 \\                                            
+regxlnwhp & -157.03 & 6.60 & -9.10 & -27.85 & 5.64 & -18.31 & -46.33 & -46.20 \\                        
+ & 51.99 & 3.13 & 3.19 & 3.36 & 9.81 & 8.44 & 7.68 & 7.61 \\
+ 
+ Financial MC ($\beta_{FMC}$) & -3.2219 & 0.0020 \\\hline
+\end{tabular} 
+}
+\scriptsize
+\parbox{\textwidth}{\emph{Notes} Second stage additional controls: year, county by year, zip, BD, FHSZ FE; beds age lnsqft prefires5 incorp. Choice set: PropertyZip regulated fhsznum boundaryID  countyfips. \bf{Sample: All of CA}}
+\end{table}
+```
