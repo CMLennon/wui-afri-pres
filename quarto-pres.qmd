@@ -57,17 +57,17 @@ Taken together: trying to understand how information and policy are shaping the 
 
 Homeowner location choices change development patterns which are a significant component of expected future wildfire losses and management costs
 
-:::: r-stack
+::: r-stack
 ![](higuera-5-2023.jpg){.fragment .fade-in-then-out height="250"}
 
 ![](baylisboomhower.png){.fragment .fade-in-then-out height="300"}
 
-[[Q:]{.hi-slate} What effect does [information]{.hi-slate} have on [prices]{.hi-slate}]{.fragment .fade-in-then-out}
+[Q:]{.hi-slate} What effect does [information]{.hi-slate} have on [prices]{.hi-slate}
 
-[[Q:]{.hi} what is the [distributional incidence]{.hi} of the effect, and who responds to this information and how?]{.fragment .fade-in-then-out}
+[Q:]{.hi} what is the [distributional incidence]{.hi} of the effect, and who responds to this information and how?
 
-[[Q:]{.hi} What does this imply for forest/housing policy going forward?]{.fragment .fade-in}
-::::
+[Q:]{.hi} What does this imply for forest/housing policy going forward?
+:::
 
 ::: aside
 First figure: Higuera et al. (2023)
@@ -161,62 +161,53 @@ ZTRAX linked transaction and assessors data from 2015-2022
 :::
 
 ::: {.column width="55%"}
-:::: r-stack
+::: r-stack
 ![Map of FHSZ in california](map_fhsz.png)
 
 ![Map of FHSZ in california](sd_county.png)
-::::
 :::
-
+:::
 :::
 
 ## California Wildfire Hazard Disclosure Laws
 
 <br>
 
-:::: r-stack
-
-:::{.fragment .fade-out}
-
-Table: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
-
+::: r-stack
+::: {.fragment .fade-out}
 |                                   | None | Medium | High | Very high |
 |-----------------------------------|------|--------|------|-----------|
 | Local Responsibility Area (LRA)   | No   | No     | No   | Yes       |
 | State Responsibility Area (SRA)   | No   | Yes    | Yes  | Yes       |
 | Federal Responsibility Area (FRA) | No   | No     | No   | No        |
 
+: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
 :::
 
-:::{.fragment .fade-in-then-out}
+::: {.fragment .fade-in-then-out}
+|                                   | None | Medium          | High | Very high |
+|-----------------------------------|------|-----------------|------|-----------|
+| Local Responsibility Area (LRA)   | No   | [No]{.hi-slate} | No   | Yes       |
+| State Responsibility Area (SRA)   | No   | [Yes]{.hi}      | Yes  | Yes       |
+| Federal Responsibility Area (FRA) | No   | No              | No   | No        |
 
-Table: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
-
-|                                   | None | Medium | High | Very high  |
-|-----------------------------------|------|--------|------|-----------|
-| Local Responsibility Area (LRA)   | No   | [No]{.hi-slate}    | No   | Yes       |
-| State Responsibility Area (SRA)   | No   | [Yes]{.hi}   | Yes  | Yes       |
-| Federal Responsibility Area (FRA) | No   | No     | No   | No        |
-
+: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
 :::
 
-:::{.fragment .fade-in}
+::: {.fragment .fade-in}
+|                                   | None | Medium | High            | Very high |
+|-----------------------------|-----------|-----------|-----------|-----------|
+| Local Responsibility Area (LRA)   | No   | No     | [No]{.hi-slate} | Yes       |
+| State Responsibility Area (SRA)   | No   | Yes    | [Yes]{.hi}      | Yes       |
+| Federal Responsibility Area (FRA) | No   | No     | No              | No        |
 
-Table: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
-
-|                                   | None | Medium | High | Very high |
-|-----------------------------------|------|--------|------|-----------|
-| Local Responsibility Area (LRA)   | No   |   No   | [No]{.hi-slate}   | Yes       |
-| State Responsibility Area (SRA)   | No   |  Yes | [Yes]{.hi}   | Yes       |
-| Federal Responsibility Area (FRA) | No   | No     | No   | No        |
+: Responsibility Areas and Fire Hazard Severity Zones where disclosure laws apply
 
 ::: aside
-[fixed [risk]{.hi-slate}, variable [risk information]{.hi}]{.fragment}
+[fixed ]{.fragment}[risk]{.hi-slate}, variable [risk information]{.hi}
 :::
-
 :::
-
-::::
+:::
 
 ## Model: Naive Hedonic
 
@@ -444,26 +435,24 @@ Higher-risk homes in western states usually have higher property values, and thu
 
 ## Model: Choice Set
 
-- Discrete choice, residential home-purchase sorting model [(Bayer et al., 2007, 2009; Klaiber and Phaneuf,
-2010; Kuminoff et al. 2013)]{.small-font}
+-   Discrete choice, residential home-purchase sorting model [(Bayer et al., 2007, 2009; Klaiber and Phaneuf, 2010; Kuminoff et al. 2013)]{.small-font}
 
-- Household (HH) $i$ chooses neighborhood $d^i_t \in \{1 \dots J\}$
-  - If HH moves, incurs financial moving cost (FMC) based on prior choice, $d^i_{t-1}$
-  - If HH stays, avoids moving cost, and $d^i_{t} = d^i_{t-1}$
+-   Household (HH) $i$ chooses neighborhood $d^i_t \in \{1 \dots J\}$
+
+    -   If HH moves, incurs financial moving cost (FMC) based on prior choice, $d^i_{t-1}$
+    -   If HH stays, avoids moving cost, and $d^i_{t} = d^i_{t-1}$
 
 <hr style="height:10px; visibility:hidden;" />
 
-
-- Neighborhood choice ($j$) is a combination of...
-  - [Spatial Location]{.hi-slate}: County, Nearest FHSZ boundary segment
-  - [Regulation Information]{.hi-slate}: Disclosure requirement, FHSZ
+-   Neighborhood choice ($j$) is a combination of...
+    -   [Spatial Location]{.hi-slate}: County, Nearest FHSZ boundary segment
+    -   [Regulation Information]{.hi-slate}: Disclosure requirement, FHSZ
 
 ## Model: Utility
 
 Household $i$'s indirect utility of choosing a location j at time t is given by
 
-:::{.small-font}
-
+::: small-font
 $$
 V_{j,t}^i = X'_{1j,t}\alpha_{X_1} - \alpha_{C}C_{J,t} + \xi_{j,t} + X'_{2j,t}\alpha^i_{X_2} + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i
 $$
@@ -471,32 +460,28 @@ $$
 
 Where preference heterogeneity shows up in...
 
-:::{.small-font}
-
+::: small-font
 $$
 X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\limits_{\gamma = 0}^{1}\sum\limits_{k=1}^{4}1[\gamma^i = \gamma] \cdot \alpha_{\gamma,k,X_2}Q_k^i
 $$
 :::
 
-:::: r-stack
-
-:::{.fragment .fade-out}
-- $X_{1j,t} =$ House/neighborhood attributes
-- $P_{jt} =$ Flow cost of living in location j, based on transaction price
-- $X_{2jt} =$ Attributes for which HH have heterogenous preferences
-- $\xi_{jt} =$ Choice-specific unobserved factors
-- $FMC(d_0^i) =$ 6% of sale price/value for prior home
+::: r-stack
+::: {.fragment .fade-out}
+-   $X_{1j,t} =$ House/neighborhood attributes
+-   $P_{jt} =$ Flow cost of living in location j, based on transaction price
+-   $X_{2jt} =$ Attributes for which HH have heterogenous preferences
+-   $\xi_{jt} =$ Choice-specific unobserved factors
+-   $FMC(d_0^i) =$ 6% of sale price/value for prior home
 :::
 
-:::{.fragment .fade-in}
-- $\epsilon_{jt}^i =$ EVD 1, idiosyncratic term
-- $Q^i_k =$ Income quartile
-- $\gamma^i =$ (Binary) grower has past experience with wildfire
-  - Base: $Q^i_k = 1, \gamma^i = 0$
-  
+::: {.fragment .fade-in}
+-   $\epsilon_{jt}^i =$ EVD 1, idiosyncratic term
+-   $Q^i_k =$ Income quartile
+-   $\gamma^i =$ (Binary) grower has past experience with wildfire
+    -   Base: $Q^i_k = 1, \gamma^i = 0$
 :::
-
-::::
+:::
 
 ## Model: Decomposition
 
@@ -513,18 +498,32 @@ $$
 ## Results: Preferences for Wildfire Variables
 
 ::: columns
-
-:::{.column width='40%'}
-1
+::: {.column width="40%"}
+|                       | Base     | Q2      | Q3      | Q4      |
+|-----------------------|----------|---------|---------|---------|
+| regulated             | 1003.15  | 63.90   | 170.92  | 323.07  |
+|                       | (303.42) | (12.84) | (12.54) | (12.54) |
+| log(WHP)              | 1.85     | -25.56  | -39.42  | -67.43  |
+|                       | (38.68)  | (2.09)  | (2.21)  | (2.44)  |
+| regulated \* log(WHP) | -157.03  | 6.60    | -9.10   | -27.85  |
+|                       | (51.99)  | (3.13)  | (3.19)  | (3.36)  |
 :::
 
-:::{.column width='40%'}
-2
+::: {.column width="40%"}
+
+|                       | Q1    | Q2     | Q3     | Q4     |
+|-----------------------|-------|--------|--------|--------|
+| regulated             | 45.08 | 195.62 | 334.58 | 456.19 |
+|                       |       |        |        |        |
+| log(WHP)              | -2.37 | -4.92  | -2.86  | -36.08 |
+|                       |       |        |        |        |
+| regulated \* log(WHP) | 5.64  | -18.31 | -46.33 | -46.20 |
+|                       |       |        |        |        |
+:::
 :::
 
-:::
+## 
 
-##
 ```{=latex}
 \begin{table}
 \begin{tabular}{lcccccccc} 
