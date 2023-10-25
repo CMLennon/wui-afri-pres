@@ -754,7 +754,7 @@ flowchart LR
 
 ::: {fig-align=center}
 
-```{r, echo=FALSE, warning=FALSE, width='80%', cache=TRUE, dpi=900}
+```{r, echo=FALSE, warning=FALSE, width='80%', cache=TRUE, dpi=600}
 
 p1 = ggplot(data = dta |> filter(as.numeric(income) > 0) |> mutate(income = ifelse(as.numeric(income) > 4000, as.numeric(income)/1000, as.numeric(income))) |> filter(income < 1200, SalesPriceAmount < 2500000), aes(x = SalesPriceAmount, y = interaction(as.factor(intLRAhigh),as.factor(fhsz)), fill = as.factor(fhsz), group = interaction(as.factor(intLRAhigh),as.factor(fhsz)))) + ggridges::geom_density_ridges(alpha = .4, color = 'grey') +scale_y_discrete(breaks = c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh'), labels = c('No risk, SRA','No risk, LRA', 'Moderate Risk, SRA', 'Moderate Risk, LRA','High Risk, SRA', 'High Risk, LRA', 'VH Risk, SRA', 'VH Risk, LRA'), limits =  c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh')) + ggplot2::theme_minimal() + ylab('LRA x FHSZ') + scale_fill_manual(name = 'FHSZ', values = c("grey", "yellow", "orange", "red"), 
 breaks = c('', 'Moderate', 'High', 'VeryHigh'), labels = c("None", "Moderate", "High", "Very High"), limits = c('VeryHigh','High','Moderate','')) + xlab('Price of Home') + scale_x_continuous(labels = scales::comma_format())
@@ -764,14 +764,14 @@ breaks = c('', 'Moderate', 'High', 'VeryHigh'), labels = c("None", "Moderate", "
 
 p1 + p2 + plot_layout(guides = "collect")
 ```
-<<<<<<< HEAD
+
 :::
 
 ## Data: EDA
 
 ::: {fig-align=center}
 
-```{r, echo=FALSE, warning=FALSE, width='80%', cache=TRUE, dpi=900}
+```{r, echo=FALSE, warning=FALSE, width='80%', cache=TRUE, dpi=600}
 
 p1 = ggplot(data = dta |> filter(as.numeric(income) > 0) |> mutate(income = ifelse(as.numeric(income) > 4000, as.numeric(income)/1000, as.numeric(income))) |> filter(income < 1200, SalesPriceAmount < 2500000, whp > 0), aes(x = log(whp + 1), y = interaction(as.factor(intLRAhigh),as.factor(fhsz)), fill = as.factor(fhsz), group = interaction(as.factor(intLRAhigh),as.factor(fhsz)))) + ggridges::geom_density_ridges(alpha = .4, color = 'grey') +scale_y_discrete(breaks = c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh'), labels = c('No risk, SRA','No risk, LRA', 'Moderate Risk, SRA', 'Moderate Risk, LRA','High Risk, SRA', 'High Risk, LRA', 'VH Risk, SRA', 'VH Risk, LRA'), limits =  c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh')) + ggplot2::theme_minimal() + ylab('LRA x FHSZ') + scale_fill_manual(name = 'FHSZ', values = c("grey", "yellow", "orange", "red"),breaks = c('', 'Moderate', 'High', 'VeryHigh'), labels = c("None", "Moderate", "High", "Very High"), limits = c('VeryHigh','High','Moderate','')) + xlab('ln(WHP)') + scale_x_continuous(labels = scales::comma_format())
 
@@ -814,6 +814,7 @@ p1 + p2 + plot_layout(guides = "collect")
 ## Results: According To Categories
 
 ::: columns
+
 ::: {.column .half-font width="45%"}
 ### Without Wildfire Experience
 
@@ -843,6 +844,7 @@ p1 + p2 + plot_layout(guides = "collect")
 | reg x high   | 23.41    | 34.48    | -71.72   | 101.87   |
 |              | (112.09) | (108.35) | (101.02) | (98.45)  |
 :::
+
 :::
 
 ## Triple Difference
