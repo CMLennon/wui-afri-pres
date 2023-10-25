@@ -198,6 +198,10 @@ h2::after.title {
 	font-size: 70%;
 }
 
+.half-font {
+	font-size: 50%;
+}
+
 iframe {
 	display: block;
 	margin-right: auto;
@@ -233,6 +237,9 @@ $highlight-color: var(--highlight-color, #FB8B24);
   color: $highlight-color;
   font-weight: bold;
 }
+.orange{
+  color: $highlight-color;
+}
 .hi-red{
   color: #FF0000;
   font-weight: bold;
@@ -240,6 +247,9 @@ $highlight-color: var(--highlight-color, #FB8B24);
 .hi-slate{
   color: #36454F;
   font-weight: bold;
+}
+.slate{
+  color: #36454F;
 }
 .orange{
   color: $highlight-color;
