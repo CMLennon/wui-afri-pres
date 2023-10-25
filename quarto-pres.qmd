@@ -46,7 +46,7 @@ dta = haven::read_dta("/home/connor/Downloads/hmda_ztrax_names_anon.dta")
 
     -   Risk Disclosure and Home Prices: Evidence from California Wildfire Hazard Zones
 
-    -   Untitled Work on Experience and Disclosure: Sorting over Wildfire Risk In the [W]{.hi}ildland [U]{.hi}rban [I]{.hi}nterface ([WUI]{.hi})
+    -   Sorting Over Wildfire Hazard: Sorting over Wildfire Risk In the [W]{.hi}ildland [U]{.hi}rban [I]{.hi}nterface ([WUI]{.hi})
 
 -   These papers; together, are trying to tease out how homeowners respond to wildfire risk and experience.
 :::
