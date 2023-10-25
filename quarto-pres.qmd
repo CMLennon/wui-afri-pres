@@ -180,9 +180,15 @@ ZTRAX linked transaction and assessors data from 2015-2022
 
 ::: {.column width="55%"}
 ::: r-stack
+::: {.fragment .fade-out}
 ![Map of FHSZ in california](map_fhsz.png)
+:::
+
+::: {.fragment .fade-in}
 
 ![Map of FHSZ in california](sd_county.png)
+
+:::
 :::
 :::
 :::
