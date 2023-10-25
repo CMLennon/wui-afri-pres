@@ -453,9 +453,6 @@ $$
 -   Fewer transactions
 -   More variability across boundaries
 
-## Results: Full Table
-
-
 
 ## Results: Over Time
 
