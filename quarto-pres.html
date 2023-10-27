@@ -10,7 +10,7 @@
 <link href="quarto-pres_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.3.433">
 
-  <meta name="author" content="LalaMa">
+  <meta name="author" content="Lala Ma">
   <meta name="author" content="Margaret Walls">
   <meta name="author" content="Matthew Wibbenmeyer">
   <meta name="author" content="Emily Joiner">
@@ -338,7 +338,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-LalaMa 
+Lala Ma 
 </div>
         <p class="quarto-title-affiliation">
             University of Kentucky
@@ -681,8 +681,26 @@ Connor Lennon
 <aside><div>
 <p>fixed <span class="hi-slate">risk</span>, variable <span class="hi">risk information</span></p>
 </div></aside></section>
-<section id="data-wfh" class="slide level2">
-<h2>Data: WFH</h2>
+<section id="data-wildfire-hazard-potential" class="slide level2">
+<h2>Data: Wildfire Hazard Potential</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><img data-src="WFHMap.png"></p>
+</div>
+</div>
+<div class="column" style="width:40%;">
+<div class="r-stack">
+<div class="fragment fade-out">
+<p><img data-src="wfh2.png"></p>
+</div>
+<div class="fragment">
+<p><img data-src="wfh3.png"></p>
+</div>
+</div>
+</div>
+<div class=".aside">
+<p>Figures from Dillon, Menakis, Fay, 2015</p>
+</div>
 </section>
 <section id="data-summary-statistics" class="slide level2">
 <h2>Data: Summary Statistics</h2>
@@ -1263,18 +1281,9 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 </section>
 <section id="data-merging" class="slide level2">
 <h2>Data: Merging</h2>
-<p>In order to estimate a sorting model of this type, we need individual data on transactions and the demographics of the buyers.</p>
-<p>We also want to understand how experiences with wildfire in the past</p>
-<p>Our sample in this work has the same source datasets, as the first one, but extended to a longer 2009-2018 timeframe.</p>
-<p>These transactions are then merged onto individual demographic data in the HMDA</p>
-<ul>
-<li>(30% Match Rate)</li>
-</ul>
-<p>Full-name matching to match buyers in the dataset to properties they sold prior home.</p>
-<ul>
-<li>(39% match rate)</li>
-</ul>
-<p>N: 341,347 linked transactions</p>
+<p>In order to estimate a sorting model of this type, we need individual data on transactions, prices and the demographics of the buyers.</p>
+<p>We also want to understand how experiences with wildfire in the past change responsiveness to fire risk information today.</p>
+<h3 id="path-we-wish-to-capture">Path we wish To capture</h3>
 <div class="cell" data-reveal="true">
 <div class="cell-output-display">
 <div>
@@ -1289,6 +1298,121 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 </div>
 </div>
 </div>
+<p><br></p>
+<div class="fragment fade-in">
+<p>Easier said than done…</p>
+</div>
+</section>
+<section id="data-merging-1" class="slide level2">
+<h2>Data: Merging</h2>
+<h4 id="easier-said-than-done-eg.">Easier said than done… eg.</h4>
+<div class="r-stack">
+<div class="fragment fade-in-then-out">
+<p><img data-src="Moving1.png"></p>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="mover2.png"></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 389.47 441.16" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 437.16)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-437.16 385.47,-437.16 385.47,4 -4,4"></polygon> <!-- person1 --> <g id="node1" class="node">
+<title>
+person1
+</title>
+<ellipse fill="none" stroke="black" cx="213.62" cy="-199.25" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="213.62" y="-195.05" font-family="Times,serif" font-size="14.00">person1</text> </g> <!-- house1_2016 --> <g id="node2" class="node">
+<title>
+house1_2016
+</title>
+<ellipse fill="none" stroke="black" cx="202.67" cy="-120.74" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="202.67" y="-116.54" font-family="Times,serif" font-size="14.00">house1_2016</text> </g> <!-- person1&#45;&#45;house1_2016 --> <g id="edge1" class="edge">
+<title>
+person1–house1_2016
+</title>
+<path fill="none" stroke="black" d="M211.08,-181.04C209.31,-168.36 206.96,-151.51 205.19,-138.85"></path> </g> <!-- house2_2012 --> <g id="node3" class="node">
+<title>
+house2_2012
+</title>
+<ellipse fill="none" stroke="black" cx="223.67" cy="-273.25" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="223.67" y="-269.05" font-family="Times,serif" font-size="14.00">house2_2012</text> </g> <!-- person1&#45;&#45;house2_2012 --> <g id="edge2" class="edge">
+<title>
+person1–house2_2012
+</title>
+<path fill="none" stroke="black" d="M216.1,-217.55C217.66,-229.02 219.66,-243.74 221.21,-255.17"></path> </g> <!-- person2 --> <g id="node4" class="node">
+<title>
+person2
+</title>
+<ellipse fill="none" stroke="black" cx="233.59" cy="-345.88" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="233.59" y="-341.68" font-family="Times,serif" font-size="14.00">person2</text> </g> <!-- person2&#45;&#45;house2_2012 --> <g id="edge4" class="edge">
+<title>
+person2–house2_2012
+</title>
+<path fill="none" stroke="black" d="M231.09,-327.55C229.57,-316.46 227.65,-302.37 226.14,-291.32"></path> </g> <!-- house1_2011 --> <g id="node5" class="node">
+<title>
+house1_2011
+</title>
+<ellipse fill="none" stroke="black" cx="255.86" cy="-415.16" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="255.86" y="-410.96" font-family="Times,serif" font-size="14.00">house1_2011</text> </g> <!-- person2&#45;&#45;house1_2011 --> <g id="edge3" class="edge">
+<title>
+person2–house1_2011
+</title>
+<path fill="none" stroke="black" d="M239.32,-363.72C242.62,-373.99 246.76,-386.85 250.07,-397.14"></path> </g> <!-- person3 --> <g id="node6" class="node">
+<title>
+person3
+</title>
+<ellipse fill="none" stroke="black" cx="129.27" cy="-88.41" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="129.27" y="-84.21" font-family="Times,serif" font-size="14.00">person3</text> </g> <!-- person3&#45;&#45;house1_2016 --> <g id="edge6" class="edge">
+<title>
+person3–house1_2016
+</title>
+<path fill="none" stroke="black" d="M158.7,-101.37C161.89,-102.78 165.16,-104.22 168.4,-105.65"></path> </g> <!-- house3_2009 --> <g id="node7" class="node">
+<title>
+house3_2009
+</title>
+<ellipse fill="none" stroke="black" cx="62.54" cy="-54.23" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="62.54" y="-50.03" font-family="Times,serif" font-size="14.00">house3_2009</text> </g> <!-- person3&#45;&#45;house3_2009 --> <g id="edge5" class="edge">
+<title>
+person3–house3_2009
+</title>
+<path fill="none" stroke="black" d="M102.13,-74.51C99.24,-73.03 96.29,-71.52 93.37,-70.02"></path> </g> <!-- person4 --> <g id="node8" class="node">
+<title>
+person4
+</title>
+<ellipse fill="none" stroke="black" cx="264.21" cy="-69.29" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="264.21" y="-65.09" font-family="Times,serif" font-size="14.00">person4</text> </g> <!-- person4&#45;&#45;house1_2016 --> <g id="edge8" class="edge">
+<title>
+person4–house1_2016
+</title>
+<path fill="none" stroke="black" d="M245.07,-85.29C238.16,-91.07 230.32,-97.62 223.29,-103.5"></path> </g> <!-- house4_2008 --> <g id="node9" class="node">
+<title>
+house4_2008
+</title>
+<ellipse fill="none" stroke="black" cx="318.93" cy="-18" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="318.93" y="-13.8" font-family="Times,serif" font-size="14.00">house4_2008</text> </g> <!-- person4&#45;&#45;house4_2008 --> <g id="edge7" class="edge">
+<title>
+person4–house4_2008
+</title>
+<path fill="none" stroke="black" d="M281.82,-52.78C287.7,-47.27 294.26,-41.12 300.22,-35.54"></path> </g> </g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<p>We end up with owner-home associations - must infer moving choices</p>
+</div>
+</div>
+</section>
+<section id="data-merging-2" class="slide level2">
+<h2>Data: Merging</h2>
+<p>Our sample in this work has the same source datasets, as the first one, but extended to a longer 2009-2018 timeframe.</p>
+<p>These transactions are then merged onto individual demographic data in the HMDA</p>
+<ul>
+<li>(30% Match Rate)</li>
+</ul>
+<p>Full-name matching to match household individuals in the dataset to properties they sold in the past.</p>
+<ul>
+<li>(39% match rate)</li>
+</ul>
+<p>N: 341,347 linked transactions</p>
 </section>
 <section id="model-choice-set" class="slide level2">
 <h2>Model: Choice Set</h2>
@@ -1302,6 +1426,7 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 </ul></li>
 </ul>
 <hr style="height:10px; visibility:hidden;">
+<div class="fragment">
 <ul>
 <li>Neighborhood choice (<span class="math inline">\(j\)</span>) is a combination of…
 <ul>
@@ -1309,6 +1434,7 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 <li><span class="hi-slate">Regulation Information</span>: Disclosure requirement, FHSZ</li>
 </ul></li>
 </ul>
+</div>
 </section>
 <section id="model-utility" class="slide level2">
 <h2>Model: Utility</h2>
@@ -1371,19 +1497,23 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </ul>
 </div>
 </section>
+<section id="model-mean-utility-decomp." class="slide level2">
+<h2>Model: Mean Utility Decomp.</h2>
+<p>Organize parameters by choice (time-location) and individual heterogeneity</p>
+<p><span class="math display">\[V_{j,t}^i = \overbrace{\underbrace{X'_{1jt}\alpha_{x_1} + X'_{2jt}\alpha_{0,x_2}  - \alpha_CC_{jt} + \xi_{jt}}_\text{choice-specific component}}^{\color{red}{\delta_{jt}}}\\ + \underbrace{\displaystyle\displaystyle\sum\limits_{\gamma_z}^{z}\sum\limits_{k=1}^{4}1[\gamma_z^i = \gamma_z] \cdot \alpha_{\gamma_z,k,X_2}Q_k^i + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i}_\text{individual-heterogeneity component}\]</span></p>
+</section>
 <section id="estimation" class="slide level2">
 <h2>Estimation</h2>
 <p>Use two-stage Berry-Levinsohn-Pakes procedure to recover conditional heterogeneity and mean preferences</p>
-<ol type="1">
-<li>Estimate conditional preference parameters, financial moving cost parameter and then plug in for estimate of mean utility.</li>
-</ol>
 <ul>
+<li>Estimate conditional preference parameters, financial moving cost parameter and then plug in for estimate of mean utility.
+<ul>
+<li>Reformulate as nested logit (move, don’t move)</li>
 <li>Estimate <span class="math inline">\(\alpha_{x_2}^i\)</span> using numerical optimization such that <span class="math inline">\(\delta_{jt}\)</span> reproduces choice shares</li>
 <li>Estimate <span class="math inline">\(\beta_{FMC}\)</span> using the move/stay decision</li>
+</ul></li>
+<li>Recover base-group coefficients from mean-choice utility, <span class="red"><span class="math inline">\(\delta_{jt}\)</span></span>.</li>
 </ul>
-<ol start="2" type="1">
-<li>Recover base-group and homogenous coefficients from mean-choice utility.</li>
-</ol>
 </section>
 <section id="identification" class="slide level2">
 <h2>Identification</h2>
@@ -1398,6 +1528,7 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </ul>
 </div>
 <div class="fragment fade-in">
+<p><br> <br></p>
 <ol start="2" type="1">
 <li>Wildfire Hazard is correlated with location amenities</li>
 </ol>
@@ -1421,9 +1552,9 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 <section id="data-eda" class="slide level2">
 <h2>Data: EDA</h2>
 <div data-fig-align="center">
-<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-3_ac870a9ec6008e9186398d21cbbd968d">
+<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-4_edd46915f11fe75a648996168a6a0757">
 <div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-3-1.png" width="6000"></p>
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-4-1.png" width="6000"></p>
 </div>
 </div>
 </div>
@@ -1431,9 +1562,9 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 <section id="data-eda-1" class="slide level2">
 <h2>Data: EDA</h2>
 <div data-fig-align="center">
-<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-4_0c9b4165c36c6b344f8f47a83ba2c815">
+<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-5_9394671d2d7d10e0a0c9df9032b7d4c2">
 <div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-4-1.png" width="6000"></p>
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-5-1.png" width="6000"></p>
 </div>
 </div>
 </div>
@@ -1558,11 +1689,11 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </div>
 </div>
 </section>
-<section id="results-according-to-categories" class="slide level2">
-<h2>Results: According To Categories</h2>
+<section id="results-triple-difference" class="slide level2">
+<h2>Results: Triple Difference</h2>
 <div class="columns">
 <div class="column half-font" style="width:45%;">
-<h3 id="without-wildfire-experience-1">Without Wildfire Experience</h3>
+<h3 id="origin-wildfire-hazard-potential-0">Origin Wildfire Hazard Potential = 0</h3>
 <table>
 <thead>
 <tr class="header">
@@ -1575,65 +1706,72 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </thead>
 <tbody>
 <tr class="odd">
-<td>fhsz-medium</td>
-<td>190.88</td>
-<td>-51.26</td>
-<td>-35.00</td>
-<td>-110.18</td>
+<td>1km x lnwhp</td>
+<td>127.14</td>
+<td>11.95</td>
+<td>18.07</td>
+<td>30.37</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(279.92)</td>
-<td>(19.29)</td>
-<td>(20.04)</td>
-<td>(21.78)</td>
+<td>(71.68)</td>
+<td>(4.38)</td>
+<td>(4.52)</td>
+<td>(4.87)</td>
 </tr>
 <tr class="odd">
-<td>fhsz-high</td>
-<td>1019.69</td>
-<td>41.19</td>
-<td>-49.69</td>
-<td>-113.77</td>
+<td>reg x 1km</td>
+<td>400.79</td>
+<td>11.54</td>
+<td>26.82</td>
+<td>-97.21</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(282.44)</td>
-<td>(16.12)</td>
-<td>(17.10)</td>
-<td>(18.62)</td>
+<td>(410.67)</td>
+<td>(32.37)</td>
+<td>(41.06)</td>
+<td>(31.10)</td>
 </tr>
 <tr class="odd">
-<td>reg x medium</td>
-<td>-874.77</td>
-<td>-36.98</td>
-<td>-102.83</td>
-<td>-189.04</td>
+<td>reg x lnwhp</td>
+<td>-64.93</td>
+<td>18.45</td>
+<td>14.59</td>
+<td>-8.06</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(661.80)</td>
-<td>(45.06)</td>
-<td>(48.53)</td>
-<td>(55.03)</td>
+<td>(74.30)</td>
+<td>(5.33)</td>
+<td>(5.28)</td>
+<td>(6.34)</td>
 </tr>
 <tr class="odd">
-<td>reg x high</td>
-<td>-65.10</td>
-<td>-22.90</td>
-<td>-51.87</td>
-<td>-97.33</td>
+<td>reg x lnwhp x 1km</td>
+<td>-216.89</td>
+<td>-27.38</td>
+<td>-47.77</td>
+<td>-41.89</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(623.45)</td>
-<td>(42.55)</td>
-<td>(44.70)</td>
-<td>(48.55)</td>
+<td>(101.17)</td>
+<td>(7.49)</td>
+<td>(7.46)</td>
+<td>(7.76)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td><span class="math inline">\(\beta_{FMC}:\)</span></td>
+<td>-3.1714</td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div><div class="column half-font" style="width:40%;">
-<h3 id="with-wildfire-experience-1">With Wildfire Experience</h3>
+<h3 id="origin-log-wildfire-hazard-potential">Origin (log) Wildfire Hazard Potential</h3>
 <table>
 <thead>
 <tr class="header">
@@ -1646,74 +1784,215 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </thead>
 <tbody>
 <tr class="odd">
-<td>fhsz-medium</td>
-<td>76.57</td>
-<td>59.68</td>
-<td>-6.17</td>
-<td>-4.44</td>
+<td>1km x lnwhp</td>
+<td>-1.56</td>
+<td>6.82</td>
+<td>6.64</td>
+<td>20.96</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(49.83)</td>
-<td>(48.55)</td>
-<td>(52.49)</td>
-<td>(56.47)</td>
+<td>(6.39)</td>
+<td>(6.05)</td>
+<td>(6.12)</td>
+<td>(6.34)</td>
 </tr>
 <tr class="odd">
-<td>fhsz-high</td>
-<td>35.46</td>
-<td>-31.27</td>
-<td>74.44</td>
-<td>-25.36</td>
+<td>reg x 1km</td>
+<td>-49.65</td>
+<td>-63.68</td>
+<td>-46.57</td>
+<td>-97.79</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(43.47)</td>
-<td>(44.49)</td>
-<td>(41.68)</td>
-<td>(50.18)</td>
+<td>(48.62)</td>
+<td>(43.89)</td>
+<td>(41.06)</td>
+<td>(37.91)</td>
 </tr>
 <tr class="odd">
-<td>reg x medium</td>
-<td>-116.27</td>
-<td>-163.99</td>
-<td>-20.98</td>
-<td>-6.24</td>
+<td>reg x lnwhp</td>
+<td>-5.92</td>
+<td>1.50</td>
+<td>-9.96</td>
+<td>-26.19</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(124.08)</td>
-<td>(124.88)</td>
-<td>(116.44)</td>
-<td>(106.28)</td>
+<td>(6.39)</td>
+<td>(6.05)</td>
+<td>(6.12)</td>
+<td>(6.34)</td>
 </tr>
 <tr class="odd">
-<td>reg x high</td>
-<td>23.41</td>
-<td>34.48</td>
-<td>-71.72</td>
-<td>101.87</td>
+<td>reg x lnwhp x 1km</td>
+<td>5.17</td>
+<td>-15.20</td>
+<td>-31.12</td>
+<td>-36.61</td>
 </tr>
 <tr class="even">
 <td></td>
-<td>(112.09)</td>
-<td>(108.35)</td>
-<td>(101.02)</td>
-<td>(98.45)</td>
+<td>(10.63)</td>
+<td>(9.83)</td>
+<td>(9.70)</td>
+<td>(9.58)</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 </section>
-<section id="triple-difference" class="slide level2">
-<h2>Triple Difference</h2>
+<section id="other-columns-of-note" class="slide level2">
+<h2>other columns of note</h2>
+<div class="columns">
+<div class="column half-font" style="width:45%;">
+<table>
+<thead>
+<tr class="header">
+<th>Income:</th>
+<th>Q1</th>
+<th>Q2</th>
+<th>Q3</th>
+<th>Q4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reg</td>
+<td>674.97</td>
+<td>65.91</td>
+<td>161.99</td>
+<td>380.98</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(407.77)</td>
+<td>(26.43)</td>
+<td>(25.36)</td>
+<td>(25.07)</td>
+</tr>
+<tr class="odd">
+<td>lnwhp</td>
+<td>-25.03</td>
+<td>-31.53</td>
+<td>-47.67</td>
+<td>-83.07</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(50.56)</td>
+<td>(2.74)</td>
+<td>(2.91)</td>
+<td>(3.24)</td>
+</tr>
+<tr class="odd">
+<td>within 1km bndry</td>
+<td>-</td>
+<td>28.83</td>
+<td>58.38</td>
+<td>95.23</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>-</td>
+<td>(15.80)</td>
+<td>(14.51)</td>
+<td>(14.44)</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column half-font" style="width:40%;">
+<table>
+<thead>
+<tr class="header">
+<th>Income:</th>
+<th>Q1</th>
+<th>Q2</th>
+<th>Q3</th>
+<th>Q4</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Reg</td>
+<td>95.71</td>
+<td>150.78</td>
+<td>226.56</td>
+<td>399.14</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(38.33)</td>
+<td>(35.08)</td>
+<td>(32.86)</td>
+<td>(30.37)</td>
+</tr>
+<tr class="odd">
+<td>lnwhp</td>
+<td>11.82</td>
+<td>-0.26</td>
+<td>-7.09</td>
+<td>-38.64</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(3.77)</td>
+<td>(3.92)</td>
+<td>(4.05)</td>
+<td>(4.40)</td>
+</tr>
+<tr class="odd">
+<td>within 1km bndry</td>
+<td>11.76</td>
+<td>71.62</td>
+<td>91.78</td>
+<td>134.27</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>(15.80)</td>
+<td>(14.51)</td>
+<td>(14.44)</td>
+<td>(14.34)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 </section>
-<section id="fmc-causal-effect" class="slide level2">
-<h2>FMC causal effect</h2>
+<section id="full-tables" class="slide level2">
+<h2>Full Tables</h2>
+<div class="{.fig-width='60%'}">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="table6.png" style="width:60.0%"></p>
+<figcaption>on fire hazard</figcaption>
+</figure>
+</div>
+</div>
 </section>
-<section id="discussion-1" class="slide level2">
-<h2>Discussion</h2>
+<section id="full-tables-1" class="slide level2">
+<h2>Full Tables</h2>
+<div class="{.fig-width='60%'}">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="table15.png" style="width:60.0%"></p>
+<figcaption>Triple Difference</figcaption>
+</figure>
+</div>
+</div>
+</section>
+<section id="discussionquestions" class="slide level2">
+<h2>Discussion/Questions</h2>
 </section>
 <section id="thank-you" class="slide level2">
 <h2>Thank you!</h2>

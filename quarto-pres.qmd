@@ -1,7 +1,7 @@
 ---
 title: "Salience, Wildfire and Homeprices in California"
 author: 
-  - name: Lala\n Ma
+  - name: Lala Ma
     affiliations:
       - name: University of Kentucky
   - name: Margaret Walls
@@ -28,7 +28,6 @@ format:
 
 ## Introduction
 
-
 ## Agenda
 
 ```{r, echo=FALSE, cache=TRUE}
@@ -38,7 +37,6 @@ p_load(tidyverse, haven, patchwork, ggplot2)
 
 dta = haven::read_dta("/home/connor/Downloads/hmda_ztrax_names_anon.dta")
 ```
-
 
 <br>
 
@@ -186,9 +184,7 @@ ZTRAX linked transaction and assessors data from 2015-2022
 :::
 
 ::: {.fragment .fade-in}
-
 ![Map of FHSZ in california](sd_county.png)
-
 :::
 :::
 :::
@@ -232,9 +228,32 @@ ZTRAX linked transaction and assessors data from 2015-2022
 fixed [risk]{.hi-slate}, variable [risk information]{.hi}
 :::
 
-## Data: WFH
+## Data: Wildfire Hazard Potential
 
+::: columns
+:::{.column width='40%'}
+![](WFHMap.png)
+:::
+:::
+:::{.column width='40%'}
 
+:::: r-stack
+:::{.fragment .fade-out}
+![](wfh2.png)
+:::
+
+:::{.fragment}
+
+![](wfh3.png)
+:::
+
+::::
+
+:::
+
+::: .aside
+Figures from Dillon, Menakis, Fay, 2015
+:::
 
 ## Data: Summary Statistics
 
@@ -458,7 +477,6 @@ $$
 -   Fewer transactions
 -   More variability across boundaries
 
-
 ## Results: Over Time
 
 <br>
@@ -530,35 +548,20 @@ Higher-risk homes in western states usually have higher property values, and thu
 
 ## Relevant Literature
 
-<br>
-<br>
+<br> <br>
 
 ### Sorting (Tiebout, 1956)
 
-
-
-  - Willingness to Pay for flood mitigation program [(Fan and Davlasherideze, 2015; Bakkensen
-and Ma, 2019)]{.small-font}
-  - Migration and Responsiveness to Climate Change [(Fan, Klaiber and Fisher-Vanden 2016; Fan,
-Fisher-Vanden and Klaiber 2018)]{.small-font}
+-   Willingness to Pay for flood mitigation program [(Fan and Davlasherideze, 2015; Bakkensen and Ma, 2019)]{.small-font}
+-   Migration and Responsiveness to Climate Change [(Fan, Klaiber and Fisher-Vanden 2016; Fan, Fisher-Vanden and Klaiber 2018)]{.small-font}
 
 ## Data: Merging
 
-In order to estimate a sorting model of this type, we need individual data on transactions and the demographics of the buyers.
+In order to estimate a sorting model of this type, we need individual data on transactions, prices and the demographics of the buyers.
 
-We also want to understand how experiences with wildfire in the past 
+We also want to understand how experiences with wildfire in the past change responsiveness to fire risk information today.
 
-Our sample in this work has the same source datasets, as the first one, but extended to a longer 2009-2018 timeframe.
-
-These transactions are then merged onto individual demographic data in the HMDA 
-
-- (30% Match Rate)
-
-Full-name matching to match buyers in the dataset to properties they sold prior home.
-
-- (39% match rate)
-
-N: 341,347 linked transactions
+### Path we wish To capture
 
 ```{mermaid}
 flowchart LR
@@ -567,6 +570,58 @@ flowchart LR
   B --> C[Origin Home Sold]
   C --> D[Focal Home Purchased]
 ```
+
+<br>
+
+::: {.fragment .fade-in}
+Easier said than done...
+:::
+
+## Data: Merging
+
+#### Easier said than done... eg.
+
+::: r-stack
+::: {.fragment .fade-in-then-out}
+![](Moving1.png)
+:::
+
+::: {.fragment .fade-in-then-out}
+![](mover2.png)
+:::
+
+::: fragment
+```{dot}
+graph G {
+  layout=neato
+  person1 -- house1_2016;
+  person1 -- house2_2012;
+  person2 -- house1_2011;
+  person2 -- house2_2012;
+  person3 -- house3_2009;
+  person3 -- house1_2016;
+  person4 -- house4_2008;
+  person4 -- house1_2016;
+}
+```
+
+We end up with owner-home associations - must infer moving choices
+:::
+:::
+
+## Data: Merging
+
+Our sample in this work has the same source datasets, as the first one, but extended to a longer 2009-2018 timeframe.
+
+These transactions are then merged onto individual demographic data in the HMDA
+
+-   (30% Match Rate)
+
+Full-name matching to match household individuals in the dataset to properties they sold in the past.
+
+-   (39% match rate)
+
+N: 341,347 linked transactions
 
 ## Model: Choice Set
 
@@ -580,9 +635,13 @@ flowchart LR
 
 <hr style="height:10px; visibility:hidden;" />
 
+:::{.fragment}
+
 -   Neighborhood choice ($j$) is a combination of...
     -   [Spatial Location]{.hi-slate}: County, Nearest FHSZ boundary segment, ln(WHP)
     -   [Regulation Information]{.hi-slate}: Disclosure requirement, FHSZ
+
+:::
 
 ## Model: Utility
 
@@ -638,68 +697,65 @@ $$
 :::
 
 ::: {.fragment .fade-in}
-
 -   $\epsilon_{jt}^i =$ EVD 1, idiosyncratic term
 -   $Q^i_k =$ Income quartile
 -   $\gamma_r^i =$ (Categorical) grower has past experience living in hazard-level $\gamma_r^i$
     -   Base: $Q^i_k = 1, \gamma_r^i = 1$
-    
 :::
+
+## Model: Mean Utility Decomp.
+
+Organize parameters by choice (time-location) and individual heterogeneity
+
+$$V_{j,t}^i = \overbrace{\underbrace{X'_{1jt}\alpha_{x_1} + X'_{2jt}\alpha_{0,x_2}  - \alpha_CC_{jt} + \xi_{jt}}_\text{choice-specific component}}^{\color{red}{\delta_{jt}}}\\ + \underbrace{\displaystyle\displaystyle\sum\limits_{\gamma_z}^{z}\sum\limits_{k=1}^{4}1[\gamma_z^i = \gamma_z] \cdot \alpha_{\gamma_z,k,X_2}Q_k^i + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i}_\text{individual-heterogeneity component}$$
 
 ## Estimation
 
 Use two-stage Berry-Levinsohn-Pakes procedure to recover conditional heterogeneity and mean preferences
 
-1. Estimate conditional preference parameters, financial moving cost parameter and then plug in for estimate of mean utility.
-  - Estimate $\alpha_{x_2}^i$ using numerical optimization such that $\delta_{jt}$ reproduces choice shares
+- Estimate conditional preference parameters, financial moving cost parameter and then plug in for estimate of mean utility.
+  - Reformulate as nested logit (move, don't move)
+  - Estimate $\alpha_{x_2}^i$ using numerical optimization such that         $\delta_{jt}$ reproduces choice shares
   - Estimate $\beta_{FMC}$ using the move/stay decision
-
-2. Recover base-group and homogenous coefficients from mean-choice utility. 
+- Recover base-group coefficients from mean-choice utility, [$\delta_{jt}$]{.red}.
 
 ## Identification
 
-:::: r-stack
+::: r-stack
+::: {.fragment .fade-out}
+1.  Flow cost/benefit of living at location $j$ may be correlated with utility-generating unobserved attributes of that location
 
-:::{.fragment .fade-out}
-
-1. Flow cost/benefit of living at location $j$ may be correlated with utility-generating unobserved attributes of that location
-  - Use $\beta_{FMC}$ as a measure of marginal utility of income [(Bayer 2016)]{.small-font}
-  - Works because $FMC$ is independent of location choice, conditional on the decision to move
-  
+-   Use $\beta_{FMC}$ as a measure of marginal utility of income [(Bayer 2016)]{.small-font}
+-   Works because $FMC$ is independent of location choice, conditional on the decision to move
 :::
 
-:::{.fragment .fade-in}
-  
-2. Wildfire Hazard is correlated with location amenities
-  - A marginal change in fire hazard in a mandated-disclosure area, conditional on measured wildfire hazard and disclosure, is independent.
-  - [Triple Difference]{.hi-slate}: The marginal utility effect of a change in fire risk, controlling for disclosure, being within a kilometer of the boundary and 2-way interactions is causal.
+::: {.fragment .fade-in}
 
+<br>
+<br>
+
+2.  Wildfire Hazard is correlated with location amenities
+
+-   A marginal change in fire hazard in a mandated-disclosure area, conditional on measured wildfire hazard and disclosure, is independent.
+-   [Triple Difference]{.hi-slate}: The marginal utility effect of a change in fire risk, controlling for disclosure, being within a kilometer of the boundary and 2-way interactions is causal.
 :::
-
-::::
+:::
 
 ## Data: Ensure consistent Hedonics
 
 ::: columns
-
-::: {.column width='35%'}
-
+::: {.column width="35%"}
 ![](table_hedonic.png)
-
 :::
 
-::: {.column width='40%'}
-
+::: {.column width="40%"}
 ![](table_sorting.png)
-
 :::
-
 :::
 
 ## Data: EDA
 
-::: {fig-align=center}
-
+::: {fig-align="center"}
 ```{r, echo=FALSE, warning=FALSE, width='80%', cache=TRUE, dpi=600}
 
 p1 = ggplot(data = dta |> filter(as.numeric(income) > 0) |> mutate(income = ifelse(as.numeric(income) > 4000, as.numeric(income)/1000, as.numeric(income))) |> filter(income < 1200, SalesPriceAmount < 2500000), aes(x = SalesPriceAmount, y = interaction(as.factor(intLRAhigh),as.factor(fhsz)), fill = as.factor(fhsz), group = interaction(as.factor(intLRAhigh),as.factor(fhsz)))) + ggridges::geom_density_ridges(alpha = .4, color = 'grey') +scale_y_discrete(breaks = c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh'), labels = c('No risk, SRA','No risk, LRA', 'Moderate Risk, SRA', 'Moderate Risk, LRA','High Risk, SRA', 'High Risk, LRA', 'VH Risk, SRA', 'VH Risk, LRA'), limits =  c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh')) + ggplot2::theme_minimal() + ylab('LRA x FHSZ') + scale_fill_manual(name = 'FHSZ', values = c("grey", "yellow", "orange", "red"), 
@@ -710,13 +766,11 @@ breaks = c('', 'Moderate', 'High', 'VeryHigh'), labels = c("None", "Moderate", "
 
 p1 + p2 + plot_layout(guides = "collect")
 ```
-
 :::
 
 ## Data: EDA
 
-::: {fig-align=center}
-
+::: {fig-align="center"}
 ```{r, echo=FALSE, warning=FALSE, width='80%', cache=TRUE, dpi=600}
 
 p1 = ggplot(data = dta |> filter(as.numeric(income) > 0) |> mutate(income = ifelse(as.numeric(income) > 4000, as.numeric(income)/1000, as.numeric(income))) |> filter(income < 1200, SalesPriceAmount < 2500000, whp > 0), aes(x = log(whp + 1), y = interaction(as.factor(intLRAhigh),as.factor(fhsz)), fill = as.factor(fhsz), group = interaction(as.factor(intLRAhigh),as.factor(fhsz)))) + ggridges::geom_density_ridges(alpha = .4, color = 'grey') +scale_y_discrete(breaks = c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh'), labels = c('No risk, SRA','No risk, LRA', 'Moderate Risk, SRA', 'Moderate Risk, LRA','High Risk, SRA', 'High Risk, LRA', 'VH Risk, SRA', 'VH Risk, LRA'), limits =  c('0.', '1.', '0.Moderate', '1.Moderate', '0.High', '1.High', '0.VeryHigh', '1.VeryHigh')) + ggplot2::theme_minimal() + ylab('LRA x FHSZ') + scale_fill_manual(name = 'FHSZ', values = c("grey", "yellow", "orange", "red"),breaks = c('', 'Moderate', 'High', 'VeryHigh'), labels = c("None", "Moderate", "High", "Very High"), limits = c('VeryHigh','High','Moderate','')) + xlab('ln(WHP)') + scale_x_continuous(labels = scales::comma_format())
@@ -750,55 +804,93 @@ p1 + p2 + plot_layout(guides = "collect")
 |---------------|---------|---------|---------|---------|
 | regulated     | 45.08   | 195.62  | 334.58  | 456.19  |
 |               | (41.07) | (30.76) | (25.84) | (23.07) |
-| ln(WHP)      | -2.37   | -4.92   | -2.86   | -36.08  |
+| ln(WHP)       | -2.37   | -4.92   | -2.86   | -36.08  |
 |               | (6.67)  | (6.23)  | (5.99)  | (6.53)  |
 | reg x ln(WHP) | 5.64    | -18.31  | -46.33  | -46.20  |
 |               | (9.81)  | (8.44)  | (7.68)  | (7.61)  |
 :::
 :::
 
-## Results: According To Categories
+## Results: Triple Difference
 
 ::: columns
-
 ::: {.column .half-font width="45%"}
-### Without Wildfire Experience
+### Origin Wildfire Hazard Potential = 0
 
-| Income:      | Base     | Q2      | Q3      | Q4      |
-|--------------|----------|---------|---------|---------|
-| fhsz-medium  | 190.88   | -51.26  | -35.00  | -110.18 |
-|              | (279.92) | (19.29) | (20.04) | (21.78) |
-| fhsz-high    | 1019.69  | 41.19   | -49.69  | -113.77 |
-|              | (282.44) | (16.12) | (17.10) | (18.62) |
-| reg x medium | -874.77  | -36.98  | -102.83 | -189.04 |
-|              | (661.80) | (45.06) | (48.53) | (55.03) |
-| reg x high   | -65.10   | -22.90  | -51.87  | -97.33  |
-|              | (623.45) | (42.55) | (44.70) | (48.55) |
+| Income:           | Base           | Q2      | Q3      | Q4      |
+|-------------------|----------------|---------|---------|---------|
+| 1km x lnwhp       | 127.14         | 11.95   | 18.07   | 30.37   |
+|                   | (71.68)        | (4.38)  | (4.52)  | (4.87)  |
+| reg x 1km         | 400.79         | 11.54   | 26.82   | -97.21  |
+|                   | (410.67)       | (32.37) | (41.06) | (31.10) |
+| reg x lnwhp       | -64.93         | 18.45   | 14.59   | -8.06   |
+|                   | (74.30)        | (5.33)  | (5.28)  | (6.34)  |
+| reg x lnwhp x 1km | -216.89        | -27.38  | -47.77  | -41.89  |
+|                   | (101.17)       | (7.49)  | (7.46)  | (7.76)  |
+|                   | $\beta_{FMC}:$ | -3.1714 |         |         |
 :::
 
 ::: {.column .half-font width="40%"}
-### With Wildfire Experience
+### Origin (log) Wildfire Hazard Potential
 
-| Income:      | Q1       | Q2       | Q3       | Q4       |
-|--------------|----------|----------|----------|----------|
-| fhsz-medium  | 76.57    | 59.68    | -6.17    | -4.44    |
-|              | (49.83)  | (48.55)  | (52.49)  | (56.47)  |
-| fhsz-high    | 35.46    | -31.27   | 74.44    | -25.36   |
-|              | (43.47)  | (44.49)  | (41.68)  | (50.18)  |
-| reg x medium | -116.27  | -163.99  | -20.98   | -6.24    |
-|              | (124.08) | (124.88) | (116.44) | (106.28) |
-| reg x high   | 23.41    | 34.48    | -71.72   | 101.87   |
-|              | (112.09) | (108.35) | (101.02) | (98.45)  |
+| Income:           | Q1      | Q2      | Q3      | Q4      |
+|-------------------|---------|---------|---------|---------|
+| 1km x lnwhp       | -1.56   | 6.82    | 6.64    | 20.96   |
+|                   | (6.39)  | (6.05)  | (6.12)  | (6.34)  |
+| reg x 1km         | -49.65  | -63.68  | -46.57  | -97.79  |
+|                   | (48.62) | (43.89) | (41.06) | (37.91) |
+| reg x lnwhp       | -5.92   | 1.50    | -9.96   | -26.19  |
+|                   | (6.39)  | (6.05)  | (6.12)  | (6.34)  |
+| reg x lnwhp x 1km | 5.17    | -15.20  | -31.12  | -36.61  |
+|                   | (10.63) | (9.83)  | (9.70)  | (9.58)  |
+|                   |         |         |         |         |
+:::
+:::
+
+## other columns of note
+::: columns
+
+::: {.column .half-font width="45%"}
+
+| Income:           | Q1      | Q2      | Q3      | Q4      |
+|-------------------|---------|---------|---------|---------|
+| Reg               | 674.97         | 65.91   | 161.99  | 380.98  |
+|                   | (407.77)       | (26.43) | (25.36) | (25.07) |
+| lnwhp             | -25.03         | -31.53  | -47.67  | -83.07  |
+|                   | (50.56)        | (2.74)  | (2.91)  | (3.24)  |
+| within 1km bndry  | \-             | 28.83   | 58.38   | 95.23   |
+|                   | \-             | (15.80) | (14.51) | (14.44) |
+:::
+
+::: {.column .half-font width="40%"}
+
+| Income:           | Q1      | Q2      | Q3      | Q4      |
+|-------------------|---------|---------|---------|---------|
+| Reg               | 95.71   | 150.78  | 226.56  | 399.14  |
+|                   | (38.33) | (35.08) | (32.86) | (30.37) |
+| lnwhp             | 11.82   | -0.26   | -7.09   | -38.64  |
+|                   | (3.77)  | (3.92)  | (4.05)  | (4.40)  |
+| within 1km bndry  | 11.76   | 71.62   | 91.78   | 134.27  |
+|                   | (15.80) | (14.51) | (14.44) | (14.34) |
+
 :::
 
 :::
 
-## Triple Difference
+## Full Tables
 
+:::{.fig-width='60%'}
+![on fire hazard](table6.png){width="60%"}
+:::
 
-## FMC causal effect
+## Full Tables
 
-## Discussion
+:::{.fig-width='60%'}
+
+![Triple Difference](table15.png){width="60%"}
+:::
+
+## Discussion/Questions
 
 ## Thank you!
 
