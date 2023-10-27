@@ -651,7 +651,7 @@ Household $i$'s indirect utility of choosing a location j at time t is given by
 
 ::: small-font
 $$
-V_{j,t}^i = X'_{1j,t}\alpha_{X_1} - \alpha_{C}C_{J,t} + \xi_{j,t} + X'_{2j,t}\alpha^i_{X_2} + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i
+V_{j,t}^i = X'_{1j,t}\alpha_{X_1} - \alpha_{C}C_{j,t} + \xi_{j,t} + X'_{2j,t}\alpha^i_{X_2} + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i
 $$
 :::
 
