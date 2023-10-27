@@ -678,7 +678,7 @@ $$V_{j,t}^i = \overbrace{\underbrace{X'_{1jt}\alpha_{x_1} + X'_{2jt}\alpha_{0,x_
 
 ## Model: Probability
 
-Households choose location to maximize flow utility in given period, ie, choose
+Households in market t choose location to maximize flow utility, ie, choose
 
 $$V_{jt}^i \geq V^i_{j't}\ \forall\ j' \neq j$$
 We assume the unobserved individual preferences are iid, and follow gumbel (min or max) distribution
