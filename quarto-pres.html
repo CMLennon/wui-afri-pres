@@ -681,6 +681,9 @@ Connor Lennon
 <aside><div>
 <p>fixed <span class="hi-slate">risk</span>, variable <span class="hi">risk information</span></p>
 </div></aside></section>
+<section id="data-wfh" class="slide level2">
+<h2>Data: WFH</h2>
+</section>
 <section id="data-summary-statistics" class="slide level2">
 <h2>Data: Summary Statistics</h2>
 <p><br></p>
@@ -976,7 +979,7 @@ Connor Lennon
 <ul>
 <li><p>Perfectly measured <span class="math inline">\(Z_{i,t}\)</span></p></li>
 <li><p>Exact functional mapping from <span class="math inline">\(f(Z_{i,t}) \to ln(P_{i,t})\)</span></p></li>
-<li><p><span class="math inline">\(P(W_{i,t}, \epsilon_{i,t}|Z_{i,t}) = 0\ \forall\ \{W_{i,t}, P_{i,t},Z_{i,t}\} \in \mathcal{D}\)</span></p></li>
+<li><p><span class="math inline">\(P(P_{i,t}|do(W_{i,t})) = P(P_{i,t}|W_{i,t},Z_{i,t})\)</span> <span class="math inline">\(\ \forall\ \{W_{i,t}, P_{i,t},Z_{i,t}\} \in \mathcal{D}\)</span></p></li>
 </ul></li>
 </ul>
 </div>
@@ -1167,7 +1170,7 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 </section>
 <section id="results-over-time" class="slide level2">
 <h2>Results: Over Time</h2>
-<p><span class="fragment fade-in hi-slate">… we’re going to come back to this</span></p>
+<p><br></p>
 <div class="quarto-figure quarto-figure-center">
 <figure>
 <p><img data-src="bdd_byyear.png" style="width:60.0%"></p>
@@ -1251,11 +1254,41 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 </section>
 <section id="relevant-literature" class="slide level2">
 <h2>Relevant Literature</h2>
+<p><br> <br></p>
 <h3 id="sorting-tiebout-1956">Sorting (Tiebout, 1956)</h3>
 <ul>
 <li>Willingness to Pay for flood mitigation program <span class="small-font">(Fan and Davlasherideze, 2015; Bakkensen and Ma, 2019)</span></li>
 <li>Migration and Responsiveness to Climate Change <span class="small-font">(Fan, Klaiber and Fisher-Vanden 2016; Fan, Fisher-Vanden and Klaiber 2018)</span></li>
 </ul>
+</section>
+<section id="data-merging" class="slide level2">
+<h2>Data: Merging</h2>
+<p>In order to estimate a sorting model of this type, we need individual data on transactions and the demographics of the buyers.</p>
+<p>We also want to understand how experiences with wildfire in the past</p>
+<p>Our sample in this work has the same source datasets, as the first one, but extended to a longer 2009-2018 timeframe.</p>
+<p>These transactions are then merged onto individual demographic data in the HMDA</p>
+<ul>
+<li>(30% Match Rate)</li>
+</ul>
+<p>Full-name matching to match buyers in the dataset to properties they sold prior home.</p>
+<ul>
+<li>(39% match rate)</li>
+</ul>
+<p>N: 341,347 linked transactions</p>
+<div class="cell" data-reveal="true">
+<div class="cell-output-display">
+<div>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
+  A[Origin Home Purchased]
+  A --&gt; B(Choose to Move and Sell Origin Home)
+  B --&gt; C[Origin Home Sold]
+  C --&gt; D[Focal Home Purchased]
+</pre>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="model-choice-set" class="slide level2">
 <h2>Model: Choice Set</h2>
@@ -1375,23 +1408,30 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </div>
 </div>
 </section>
-<section id="identification---fmc-endogeneity-may-remove-this" class="slide level2">
-<h2>Identification - FMC Endogeneity (may remove this)</h2>
+<section id="identification---fmc-endogeneity" class="slide level2">
+<h2>Identification - FMC Endogeneity</h2>
 <div data-fig-align="center">
-<div class="cell" width="80%">
+<div class="cell" width="70%">
 <div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-2-1.png" width="960"></p>
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
 </div>
 </div>
+<p>[OVB: Omitted Variable of Concern], [Price_o: Price of Origin Home], [Price_c: Price of Focal Home]</p>
 </div>
 </section>
-<section id="identification---fmc-endogeneity-may-remove-this-1" class="slide level2">
+<section id="identification---fmc-endogeneity-may-remove-this" class="slide level2">
 <h2>Identification - FMC Endogeneity (may remove this)</h2>
 <p><br></p>
 <p>In this case, we can use the <span class="hi-slate">Front Door Criterion</span> <span class="small-font">(Pearl, 1995; Bellemare, Bloem, Wexler, 2020)</span> to identify the effect of FMC → Choice.</p>
+<ul>
+<li><span class="hi-slate">Idea</span>: A Front-door identified causal effect is in many ways an ‘anti-instrument’:
+<ul>
+<li>Rather than identify a portion of our variable’s information that is causal, we want to see how FMC changes the probability of moving, and then use THAT variation to identify the causal effect</li>
+</ul></li>
+</ul>
 <p><span class="hi">Intuition</span>: Decompose problem into two solvable ones: marginal effect of FMC on stay probability and marginal effect of stay on final choice.</p>
 </section>
-<section id="identification---fmc-endogeneity-may-remove-this-2" class="slide level2">
+<section id="identification---fmc-endogeneity-may-remove-this-1" class="slide level2">
 <h2>Identification - FMC Endogeneity (may remove this)</h2>
 <p><br></p>
 <p><strong>Assumptions</strong></p>
@@ -1399,44 +1439,17 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 <p>Aside from the direct route, the decision to move is not associated with FMC (no backdoor path from move to FMC)</p>
 <p>Given FMC, there is no backdoor path from the decision to move to the location chosen.</p>
 </section>
-<section id="identification---fmc-endogeneity" class="slide level2">
+<section id="identification---fmc-endogeneity-1" class="slide level2">
 <h2>Identification - FMC Endogeneity</h2>
 <p>If met, then,</p>
 <p>Step 1. Estimate <span class="math inline">\(P(Move|FMC)\)</span> - Logistic regression/classifier</p>
 <p>Step 2. Estimate <span class="math inline">\(P(Choice|Move,FMC)\)</span> - multinomial logit/classifier</p>
-<p>Step 3. Combine</p>
+<p>Step 3. Combine: as simple as the coefficient in 1 times average utility or probability of each choice for movers</p>
 <div class="fragment fade-in small-font">
 <p><span class="math display">\[Causal\ Estimand =P(Move|FMC)*P(Choice|Move,FMC)\]</span></p>
-<p><span class="math display">\[=P(Move = 0|FMC)*P(Choice = Stay|Move = 0,FMC) + \\
+<p><span class="math display">\[=P(Stay|FMC)*P(Choice = Stay|Move = 0,FMC) + \\
 P(Move = 1|FMC)*P(Choice|Move = 1,FMC)\]</span></p>
-<p><span class="math display">\[=P(Stay|FMC) + P(Move|FMC)*P(Choice|Move = 1,FMC)\]</span></p>
-</div>
-</section>
-<section id="data-merging" class="slide level2">
-<h2>Data: Merging</h2>
-<p>Our sample in this work covers property and home transactions in California from 2009-2019. (Zillow ZTRAX)</p>
-<p>These transactions are then merged onto individual demographic data in the HMDA</p>
-<ul>
-<li>(30% Match Rate)</li>
-</ul>
-<p>Full-name matching to match buyers in the dataset to properties they sold prior home.</p>
-<ul>
-<li>(39% match rate)</li>
-</ul>
-<p>N: 341,347 linked transactions</p>
-<div class="cell" data-reveal="true">
-<div class="cell-output-display">
-<div>
-<div>
-<pre class="mermaid mermaid-js">flowchart LR
-  A[Origin Home Purchased]
-  A --&gt; B(Choose to Move and Sell Origin Home)
-  B --&gt; C[Origin Home Sold]
-  C --&gt; D[Focal Home Purchased]
-</pre>
-</div>
-</div>
-</div>
+<p><span class="math display">\[=P(Stay|FMC)*1[Move = 0] + \\ P(Move|FMC)*P(Choice|Move = 1,FMC)*1[Move = 1]\]</span> Importantly - <span class="math inline">\(Choice\)</span> in this case can represent either the choice itself, as above, or the <em>Utility</em> of that choice.</p>
 </div>
 </section>
 <section id="data-ensure-consistent-hedonics" class="slide level2">

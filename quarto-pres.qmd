@@ -1,7 +1,7 @@
 ---
 title: "Salience, Wildfire and Homeprices in California"
 author: 
-  - name: Lala Ma
+  - name: Lala\n Ma
     affiliations:
       - name: University of Kentucky
   - name: Margaret Walls
@@ -23,6 +23,7 @@ format:
   revealjs:
     theme: myformat.scss
     auto-stretch: false
+  pdf: default
 ---
 
 ## Introduction
@@ -231,6 +232,10 @@ ZTRAX linked transaction and assessors data from 2015-2022
 fixed [risk]{.hi-slate}, variable [risk information]{.hi}
 :::
 
+## Data: WFH
+
+
+
 ## Data: Summary Statistics
 
 <br>
@@ -352,7 +357,7 @@ $$ Two primary identification threats
 
     -   Exact functional mapping from $f(Z_{i,t}) \to ln(P_{i,t})$
 
-    -   $P(W_{i,t}, \epsilon_{i,t}|Z_{i,t}) = 0\ \forall\ \{W_{i,t}, P_{i,t},Z_{i,t}\} \in \mathcal{D}$
+    -   $P(P_{i,t}|do(W_{i,t})) = P(P_{i,t}|W_{i,t},Z_{i,t})$ $\ \forall\ \{W_{i,t}, P_{i,t},Z_{i,t}\} \in \mathcal{D}$
 :::
 :::
 
@@ -456,7 +461,7 @@ $$
 
 ## Results: Over Time
 
-[... we're going to come back to this]{.fragment .fade-in .hi-slate}
+<br>
 
 ![Boundary Effects, by Year](bdd_byyear.png){width="60%"}
 
@@ -525,11 +530,43 @@ Higher-risk homes in western states usually have higher property values, and thu
 
 ## Relevant Literature
 
+<br>
+<br>
+
 ### Sorting (Tiebout, 1956)
+
+
+
   - Willingness to Pay for flood mitigation program [(Fan and Davlasherideze, 2015; Bakkensen
 and Ma, 2019)]{.small-font}
   - Migration and Responsiveness to Climate Change [(Fan, Klaiber and Fisher-Vanden 2016; Fan,
 Fisher-Vanden and Klaiber 2018)]{.small-font}
+
+## Data: Merging
+
+In order to estimate a sorting model of this type, we need individual data on transactions and the demographics of the buyers.
+
+We also want to understand how experiences with wildfire in the past 
+
+Our sample in this work has the same source datasets, as the first one, but extended to a longer 2009-2018 timeframe.
+
+These transactions are then merged onto individual demographic data in the HMDA 
+
+- (30% Match Rate)
+
+Full-name matching to match buyers in the dataset to properties they sold prior home.
+
+- (39% match rate)
+
+N: 341,347 linked transactions
+
+```{mermaid}
+flowchart LR
+  A[Origin Home Purchased]
+  A --> B(Choose to Move and Sell Origin Home)
+  B --> C[Origin Home Sold]
+  C --> D[Focal Home Purchased]
+```
 
 ## Model: Choice Set
 
@@ -640,103 +677,8 @@ Use two-stage Berry-Levinsohn-Pakes procedure to recover conditional heterogenei
 :::
 
 ::::
-## Identification - FMC Endogeneity (may remove this)
-
-::: {fig-align=center}
-
-```{r, echo=FALSE, width='80%'}
-library(dagitty)
-library(ggdag)
-library(ggplot2)
-
-dagified <- dagify(Move ~ FMC,
-                   FMC ~ Move,
-                   Choice ~ Move,
-                   Price_o ~ OVB,
-                   Choice ~ OVB,
-                   Price_c ~Choice,
-                   Choice ~Price_c,
-                   FMC ~ Price_o,
-                   Price_c~OVB,
-                   coords=list(
-                       x=c(FMC=1,Move=2,Choice=3,OVB=2, Price_o=1, Price_c = 3),
-                       y=c(FMC=1,Move=1,Choice=1,OVB=1.5, Price_o = 1.25, Price_c = 1.25)
-                   ),
-                   exposure = "FMC",
-                   outcome ="Choice"
-)
-
-ggdag(dagified, node_size=19) + ggplot2::theme_minimal() + remove_grid() + ggplot2::theme(axis.text.x = element_blank(), axis.text.y = element_blank()) +xlab('') + ylab('')
-```
 
 :::
-
-## Identification - FMC Endogeneity (may remove this)
-
-<br>
-
-In this case, we can use the [Front Door Criterion]{.hi-slate} [(Pearl, 1995; Bellemare, Bloem, Wexler, 2020)]{.small-font} to identify the effect of FMC → Choice.
-
-[Intuition]{.hi}: Decompose problem into two solvable ones: marginal effect of FMC on stay probability and marginal effect of stay on final choice.
-
-## Identification - FMC Endogeneity (may remove this)
-
-<br> 
-
-**Assumptions**
-
-Given the decision to move, FMC does not change the choice made
-
-Aside from the direct route, the decision to move is not associated with FMC (no backdoor path from move to FMC)
-
-Given FMC, there is no backdoor path from the decision to move to the location chosen.
-
-
-
-## Identification - FMC Endogeneity
-
-If met, then,
-
-Step 1. Estimate $P(Move|FMC)$ - Logistic regression/classifier
-
-Step 2. Estimate $P(Choice|Move,FMC)$ - multinomial logit/classifier
-
-Step 3. Combine
-
-
-
-::: {.fragment .fade-in .small-font}
-
-$$Causal\ Estimand =P(Move|FMC)*P(Choice|Move,FMC)$$
-
-$$=P(Move = 0|FMC)*P(Choice = Stay|Move = 0,FMC) + \\
-P(Move = 1|FMC)*P(Choice|Move = 1,FMC)$$
-
-$$=P(Stay|FMC) + P(Move|FMC)*P(Choice|Move = 1,FMC)$$
-
-:::
-
-## Data: Merging
-
-Our sample in this work covers property and home transactions in California from 2009-2019. (Zillow ZTRAX)
-
-These transactions are then merged onto individual demographic data in the HMDA 
-
-- (30% Match Rate)
-
-Full-name matching to match buyers in the dataset to properties they sold prior home.
-
-- (39% match rate)
-
-N: 341,347 linked transactions
-
-```{mermaid}
-flowchart LR
-  A[Origin Home Purchased]
-  A --> B(Choose to Move and Sell Origin Home)
-  B --> C[Origin Home Sold]
-  C --> D[Focal Home Purchased]
-```
 
 ## Data: Ensure consistent Hedonics
 
