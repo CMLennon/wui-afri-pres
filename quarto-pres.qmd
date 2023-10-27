@@ -613,7 +613,7 @@ N: 341,347 linked transactions
 ## Model: Utility
 
 Household $i$'s indirect utility of choosing a location j at time t is given by
- d
+
 ::: small-font
 $$
 V_{j,t}^i = X'_{1j,t}\alpha_{X_1} - \alpha_{C}C_{j,t} + \xi_{j,t} + X'_{2j,t}\alpha^i_{X_2} + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i
@@ -675,6 +675,16 @@ $$
 Organize parameters by choice (time-location) and individual heterogeneity
 
 $$V_{j,t}^i = \overbrace{\underbrace{X'_{1jt}\alpha_{x_1} + X'_{2jt}\alpha_{0,x_2}  - \alpha_CC_{jt} + \xi_{jt}}_\text{choice-specific component}}^{\color{red}{\delta_{jt}}}\\ + \underbrace{\displaystyle\displaystyle\sum\limits_{\gamma_z}^{z}\sum\limits_{k=1}^{4}1[\gamma_z^i = \gamma_z] \cdot \alpha_{\gamma_z,k,X_2}Q_k^i + \beta_{FMC}1[d_t^i \not = d_{t-1}^i]\cdot FMC(d_{t-1}^i) + \epsilon_{j,t}^i}_\text{individual-heterogeneity component}$$
+
+## Model: Probability
+
+Households choose location to maximize flow utility in given period, ie, choose
+
+$$V_{jt}^i \geq V^i_{j't}\ \forall\ j' \neq j$$
+We assume the unobserved individual preferences are iid, and follow gumbel (min or max) distribution
+
+$$Pr^i_{jt} = (\frac{e^{V^i_{j,t}}}{\sum_{j'}^Je^{V^i_{j,t}}})$$
+We observe $N_t \in N$ individuals moving in market/time-period t, average over individual probabilities to recover the share predictions for each choice j in market t.
 
 ## Estimation
 
