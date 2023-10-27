@@ -1407,50 +1407,7 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </ul>
 </div>
 </div>
-</section>
-<section id="identification---fmc-endogeneity" class="slide level2">
-<h2>Identification - FMC Endogeneity</h2>
-<div data-fig-align="center">
-<div class="cell" width="70%">
-<div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-3-1.png" width="960"></p>
-</div>
-</div>
-<p>[OVB: Omitted Variable of Concern], [Price_o: Price of Origin Home], [Price_c: Price of Focal Home]</p>
-</div>
-</section>
-<section id="identification---fmc-endogeneity-may-remove-this" class="slide level2">
-<h2>Identification - FMC Endogeneity (may remove this)</h2>
-<p><br></p>
-<p>In this case, we can use the <span class="hi-slate">Front Door Criterion</span> <span class="small-font">(Pearl, 1995; Bellemare, Bloem, Wexler, 2020)</span> to identify the effect of FMC → Choice.</p>
-<ul>
-<li><span class="hi-slate">Idea</span>: A Front-door identified causal effect is in many ways an ‘anti-instrument’:
-<ul>
-<li>Rather than identify a portion of our variable’s information that is causal, we want to see how FMC changes the probability of moving, and then use THAT variation to identify the causal effect</li>
-</ul></li>
-</ul>
-<p><span class="hi">Intuition</span>: Decompose problem into two solvable ones: marginal effect of FMC on stay probability and marginal effect of stay on final choice.</p>
-</section>
-<section id="identification---fmc-endogeneity-may-remove-this-1" class="slide level2">
-<h2>Identification - FMC Endogeneity (may remove this)</h2>
-<p><br></p>
-<p><strong>Assumptions</strong></p>
-<p>Given the decision to move, FMC does not change the choice made</p>
-<p>Aside from the direct route, the decision to move is not associated with FMC (no backdoor path from move to FMC)</p>
-<p>Given FMC, there is no backdoor path from the decision to move to the location chosen.</p>
-</section>
-<section id="identification---fmc-endogeneity-1" class="slide level2">
-<h2>Identification - FMC Endogeneity</h2>
-<p>If met, then,</p>
-<p>Step 1. Estimate <span class="math inline">\(P(Move|FMC)\)</span> - Logistic regression/classifier</p>
-<p>Step 2. Estimate <span class="math inline">\(P(Choice|Move,FMC)\)</span> - multinomial logit/classifier</p>
-<p>Step 3. Combine: as simple as the coefficient in 1 times average utility or probability of each choice for movers</p>
-<div class="fragment fade-in small-font">
-<p><span class="math display">\[Causal\ Estimand =P(Move|FMC)*P(Choice|Move,FMC)\]</span></p>
-<p><span class="math display">\[=P(Stay|FMC)*P(Choice = Stay|Move = 0,FMC) + \\
-P(Move = 1|FMC)*P(Choice|Move = 1,FMC)\]</span></p>
-<p><span class="math display">\[=P(Stay|FMC)*1[Move = 0] + \\ P(Move|FMC)*P(Choice|Move = 1,FMC)*1[Move = 1]\]</span> Importantly - <span class="math inline">\(Choice\)</span> in this case can represent either the choice itself, as above, or the <em>Utility</em> of that choice.</p>
-</div>
+<p>:::</p>
 </section>
 <section id="data-ensure-consistent-hedonics" class="slide level2">
 <h2>Data: Ensure consistent Hedonics</h2>
@@ -1465,9 +1422,9 @@ P(Move = 1|FMC)*P(Choice|Move = 1,FMC)\]</span></p>
 <section id="data-eda" class="slide level2">
 <h2>Data: EDA</h2>
 <div data-fig-align="center">
-<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-4_edd46915f11fe75a648996168a6a0757">
+<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-3_ac870a9ec6008e9186398d21cbbd968d">
 <div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-4-1.png" width="6000"></p>
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-3-1.png" width="6000"></p>
 </div>
 </div>
 </div>
@@ -1475,9 +1432,9 @@ P(Move = 1|FMC)*P(Choice|Move = 1,FMC)\]</span></p>
 <section id="data-eda-1" class="slide level2">
 <h2>Data: EDA</h2>
 <div data-fig-align="center">
-<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-5_9394671d2d7d10e0a0c9df9032b7d4c2">
+<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-4_0c9b4165c36c6b344f8f47a83ba2c815">
 <div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-5-1.png" width="6000"></p>
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-4-1.png" width="6000"></p>
 </div>
 </div>
 </div>
