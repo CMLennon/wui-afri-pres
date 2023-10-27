@@ -1,7 +1,7 @@
 ---
 title: "Salience, Wildfire and Homeprices in California"
 author: 
-  - name: Lala Ma
+  - name: Lala\n Ma
     affiliations:
       - name: University of Kentucky
   - name: Margaret Walls
