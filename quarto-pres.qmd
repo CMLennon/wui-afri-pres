@@ -631,7 +631,7 @@ $$
 ::: r-stack
 ::: {.fragment .fade-out}
 -   $X_{1j,t} =$ House/neighborhood attributes
--   $P_{jt} =$ Flow cost of living in location j, based on transaction price
+-   $C_{jt} =$ Flow cost of living in location j, based on transaction price
 -   $X_{2jt} =$ Attributes for which HH have heterogenous preferences
 -   $\xi_{jt} =$ Choice-specific unobserved factors
 -   $FMC(d_0^i) =$ 6% sale price/value for property buyer is moving [from]{.hi}
