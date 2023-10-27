@@ -678,8 +678,6 @@ Use two-stage Berry-Levinsohn-Pakes procedure to recover conditional heterogenei
 
 ::::
 
-:::
-
 ## Data: Ensure consistent Hedonics
 
 ::: columns
