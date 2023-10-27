@@ -131,7 +131,7 @@ Second figure: Baylis and Boomhower (2023)
 ## Related Literature
 
 1.  [Hedonics of Disaster Risk]{.hi-slate} (Rosen 1974)
-    -   Negative willingness-to-pay for wildfire risk, when risk is salient <br> [(Donovan, Champ, & Butry 2008, McCoy and Walsh 2018, Garnache 2023, Ma et al. 2023)]{.small-font}
+    -   Negative willingness-to-pay for wildfire risk, when risk is salient <br> [(Donovan, Champ, & Butry 2008, McCoy and Walsh 2018, Garnache 2023)]{.small-font}
     -   Observed in parallel to flood risk <br> [(Hallstrom and Smith, 2005; Kousky, 2010; Bin and Landry, 2013; Gallagher, 2014)]{.small-font}
 2.  [Boundary Discontinuity Design]{.hi-slate} (Black 1999)
     -   Risk is spatially correlated: use disclosure requirement discontinuity, smooth amentity change to identify changes from disclosure <br> [(Turner et al. 2014, Bakkensen and Ma 2020)]{.small-font}
@@ -483,8 +483,6 @@ $$
 
 ![Boundary Effects, by Year](bdd_byyear.png){width="60%"}
 
-## Discussion
-
 # Interlude
 
 ## Revisiting Motivating Questions
@@ -525,7 +523,7 @@ Higher-risk homes in western states usually have higher property values, and thu
 
 -   Uses ZTRAX transaction and assessment data, linked to home mortgage records from the HMDA dataset across all of California.
 
--   Using name-matching across mortgage documents, build a historical record for each buyer of the home they moved from (origin home) and to (focal home)
+-   Build a historical record for each buyer of the home they moved from (origin home) and to (focal home)
 
 -   Design: BLP sorting model with:
 
@@ -543,7 +541,7 @@ Higher-risk homes in western states usually have higher property values, and thu
 
 ::: fragment
 -   [Information Shock:]{.hi-slate}
-    -   Buyers with [previous experience]{.hi} with wildfire experience receive more disutility from fire risk when risk is disclosed than [less-experienced]{.hi-slate} buyers
+    -   Buyers with [previous experience]{.hi} with wildfire or living in wildfire-prone areas receive more disutility from fire risk when risk is disclosed than [less-experienced]{.hi-slate} buyers
 :::
 
 ## Relevant Literature
@@ -577,37 +575,6 @@ flowchart LR
 Easier said than done...
 :::
 
-## Data: Merging
-
-#### Easier said than done... eg.
-
-::: r-stack
-::: {.fragment .fade-in-then-out}
-![](Moving1.png)
-:::
-
-::: {.fragment .fade-in-then-out}
-![](mover2.png)
-:::
-
-::: fragment
-```{dot}
-graph G {
-  layout=neato
-  person1 -- house1_2016;
-  person1 -- house2_2012;
-  person2 -- house1_2011;
-  person2 -- house2_2012;
-  person3 -- house3_2009;
-  person3 -- house1_2016;
-  person4 -- house4_2008;
-  person4 -- house1_2016;
-}
-```
-
-We end up with owner-home associations - must infer moving choices
-:::
-:::
 
 ## Data: Merging
 
@@ -894,4 +861,122 @@ p1 + p2 + plot_layout(guides = "collect")
 
 ## Thank you!
 
+# Appendix
+
+## Data: Merging
+
+#### Easier said than done... eg.
+
+::: r-stack
+::: {.fragment .fade-in-then-out}
+![](Moving1.png)
+:::
+
+::: {.fragment .fade-in-then-out}
+![](mover2.png)
+:::
+
+::: fragment
+```{dot}
+graph G {
+  layout=neato
+  person1 -- house1_2016;
+  person1 -- house2_2012;
+  person2 -- house1_2011;
+  person2 -- house2_2012;
+  person3 -- house3_2009;
+  person3 -- house1_2016;
+  person4 -- house4_2008;
+  person4 -- house1_2016;
+}
+```
+
+We end up with owner-home associations - must infer moving choices
+:::
+:::
+
+## Identification - FMC Endogeneity
+
+::: {fig-align=center}
+
+```{r, echo=FALSE, width='70%'}
+library(dagitty)
+library(ggdag)
+library(ggplot2)
+
+dagified <- dagify(Move ~ FMC,
+                   FMC ~ Move,
+                   Choice ~ Move,
+                   Price_o ~ OVB,
+                   Choice ~ OVB,
+                   Price_c ~Choice,
+                   Choice ~Price_c,
+                   FMC ~ Price_o,
+                   Price_c~OVB,
+                   coords=list(
+                       x=c(FMC=1,Move=2,Choice=3,OVB=2, Price_o=1, Price_c = 3),
+                       y=c(FMC=1,Move=1,Choice=1,OVB=1.5, Price_o = 1.25, Price_c = 1.25)
+                   ),
+                   exposure = "FMC",
+                   outcome ="Choice"
+)
+
+ggdag(dagified, node_size=19) + ggplot2::theme_minimal() + remove_grid() + ggplot2::theme(axis.text.x = element_blank(), axis.text.y = element_blank()) +xlab('') + ylab('')
+```
+
+[OVB: Omitted Variable of Concern], [Price_o: Price of Origin Home], [Price_c: Price of Focal Home]
+
+:::
+
+## Identification - FMC Endogeneity (may remove this)
+
+<br>
+
+In this case, we can use the [Front Door Criterion]{.hi-slate} [(Pearl, 1995; Bellemare, Bloem, Wexler, 2020)]{.small-font} to identify the effect of FMC → Choice.
+
+- [Idea]{.hi-slate}: A Front-door identified causal effect is in many ways an 'anti-instrument':
+  - Rather than identify a portion of our variable's information that is causal, we want to see how FMC changes the probability of moving, and then use THAT variation to identify the causal effect
+
+[Intuition]{.hi}: Decompose problem into two solvable ones: marginal effect of FMC on stay probability and marginal effect of stay on final choice.
+
+## Identification - FMC Endogeneity (may remove this)
+
+<br> 
+
+**Assumptions**
+
+Given the decision to move, FMC does not change the choice made
+
+Aside from the direct route, the decision to move is not associated with FMC (no backdoor path from move to FMC)
+
+Given FMC, there is no backdoor path from the decision to move to the location chosen.
+
+
+
+## Identification - FMC Endogeneity
+
+If met, then,
+
+Step 1. Estimate $P(Move|FMC)$ - Logistic regression/classifier
+
+Step 2. Estimate $P(Choice|Move,FMC)$ - multinomial logit/classifier
+
+Step 3. Combine: as simple as the coefficient in 1 times average utility or probability of each choice for movers 
+
+
+
+::: {.fragment .fade-in .small-font}
+
+$$Causal\ Estimand =P(Move|FMC)*P(Choice|Move,FMC)$$
+
+$$=P(Stay|FMC)*P(Choice = Stay|Move = 0,FMC) + \\
+P(Move = 1|FMC)*P(Choice|Move = 1,FMC)$$
+
+$$=P(Stay|FMC)*1[Move = 0] + \\ P(Move|FMC)*P(Choice|Move = 1,FMC)*1[Move = 1]$$
+Importantly - $Choice$ in this case can represent either the choice itself, as above, or the *Utility* of that choice.
+
+:::
+
 ## References
+
+

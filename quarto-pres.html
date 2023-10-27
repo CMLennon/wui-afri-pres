@@ -468,7 +468,7 @@ Connor Lennon
 <ol type="1">
 <li><span class="hi-slate">Hedonics of Disaster Risk</span> (Rosen 1974)
 <ul>
-<li>Negative willingness-to-pay for wildfire risk, when risk is salient <br> <span class="small-font">(Donovan, Champ, &amp; Butry 2008, McCoy and Walsh 2018, Garnache 2023, Ma et al.&nbsp;2023)</span></li>
+<li>Negative willingness-to-pay for wildfire risk, when risk is salient <br> <span class="small-font">(Donovan, Champ, &amp; Butry 2008, McCoy and Walsh 2018, Garnache 2023)</span></li>
 <li>Observed in parallel to flood risk <br> <span class="small-font">(Hallstrom and Smith, 2005; Kousky, 2010; Bin and Landry, 2013; Gallagher, 2014)</span></li>
 </ul></li>
 <li><span class="hi-slate">Boundary Discontinuity Design</span> (Black 1999)
@@ -1195,9 +1195,6 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 <figcaption>Boundary Effects, by Year</figcaption>
 </figure>
 </div>
-</section>
-<section id="discussion" class="slide level2">
-<h2>Discussion</h2>
 </section></section>
 <section>
 <section id="interlude" class="title-slide slide level1 center">
@@ -1242,7 +1239,7 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 <p><span class="hi-slate">Goal: Estimate responsiveness of utility and choices to wildfire hazard, across income, individuals’ fire experience and location heterogeneity</span></p>
 <ul>
 <li><p>Uses ZTRAX transaction and assessment data, linked to home mortgage records from the HMDA dataset across all of California.</p></li>
-<li><p>Using name-matching across mortgage documents, build a historical record for each buyer of the home they moved from (origin home) and to (focal home)</p></li>
+<li><p>Build a historical record for each buyer of the home they moved from (origin home) and to (focal home)</p></li>
 <li><p>Design: BLP sorting model with:</p>
 <ul>
 <li>choices distinguished by wildfire disclosure requirements</li>
@@ -1265,7 +1262,7 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 <ul>
 <li><span class="hi-slate">Information Shock:</span>
 <ul>
-<li>Buyers with <span class="hi">previous experience</span> with wildfire experience receive more disutility from fire risk when risk is disclosed than <span class="hi-slate">less-experienced</span> buyers</li>
+<li>Buyers with <span class="hi">previous experience</span> with wildfire or living in wildfire-prone areas receive more disutility from fire risk when risk is disclosed than <span class="hi-slate">less-experienced</span> buyers</li>
 </ul></li>
 </ul>
 </div>
@@ -1304,104 +1301,6 @@ min(dist(i,bnd)) &lt; Bkm \ \forall\ bnd \in \ BoundaryLine
 </div>
 </section>
 <section id="data-merging-1" class="slide level2">
-<h2>Data: Merging</h2>
-<h4 id="easier-said-than-done-eg.">Easier said than done… eg.</h4>
-<div class="r-stack">
-<div class="fragment fade-in-then-out">
-<p><img data-src="Moving1.png"></p>
-</div>
-<div class="fragment fade-in-then-out">
-<p><img data-src="mover2.png"></p>
-</div>
-<div class="fragment">
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<div>
-<svg width="960" height="480" viewbox="0.00 0.00 389.47 441.16" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
-<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 437.16)">
-<title>
-G
-</title>
-<polygon fill="white" stroke="transparent" points="-4,4 -4,-437.16 385.47,-437.16 385.47,4 -4,4"></polygon> <!-- person1 --> <g id="node1" class="node">
-<title>
-person1
-</title>
-<ellipse fill="none" stroke="black" cx="213.62" cy="-199.25" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="213.62" y="-195.05" font-family="Times,serif" font-size="14.00">person1</text> </g> <!-- house1_2016 --> <g id="node2" class="node">
-<title>
-house1_2016
-</title>
-<ellipse fill="none" stroke="black" cx="202.67" cy="-120.74" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="202.67" y="-116.54" font-family="Times,serif" font-size="14.00">house1_2016</text> </g> <!-- person1&#45;&#45;house1_2016 --> <g id="edge1" class="edge">
-<title>
-person1–house1_2016
-</title>
-<path fill="none" stroke="black" d="M211.08,-181.04C209.31,-168.36 206.96,-151.51 205.19,-138.85"></path> </g> <!-- house2_2012 --> <g id="node3" class="node">
-<title>
-house2_2012
-</title>
-<ellipse fill="none" stroke="black" cx="223.67" cy="-273.25" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="223.67" y="-269.05" font-family="Times,serif" font-size="14.00">house2_2012</text> </g> <!-- person1&#45;&#45;house2_2012 --> <g id="edge2" class="edge">
-<title>
-person1–house2_2012
-</title>
-<path fill="none" stroke="black" d="M216.1,-217.55C217.66,-229.02 219.66,-243.74 221.21,-255.17"></path> </g> <!-- person2 --> <g id="node4" class="node">
-<title>
-person2
-</title>
-<ellipse fill="none" stroke="black" cx="233.59" cy="-345.88" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="233.59" y="-341.68" font-family="Times,serif" font-size="14.00">person2</text> </g> <!-- person2&#45;&#45;house2_2012 --> <g id="edge4" class="edge">
-<title>
-person2–house2_2012
-</title>
-<path fill="none" stroke="black" d="M231.09,-327.55C229.57,-316.46 227.65,-302.37 226.14,-291.32"></path> </g> <!-- house1_2011 --> <g id="node5" class="node">
-<title>
-house1_2011
-</title>
-<ellipse fill="none" stroke="black" cx="255.86" cy="-415.16" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="255.86" y="-410.96" font-family="Times,serif" font-size="14.00">house1_2011</text> </g> <!-- person2&#45;&#45;house1_2011 --> <g id="edge3" class="edge">
-<title>
-person2–house1_2011
-</title>
-<path fill="none" stroke="black" d="M239.32,-363.72C242.62,-373.99 246.76,-386.85 250.07,-397.14"></path> </g> <!-- person3 --> <g id="node6" class="node">
-<title>
-person3
-</title>
-<ellipse fill="none" stroke="black" cx="129.27" cy="-88.41" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="129.27" y="-84.21" font-family="Times,serif" font-size="14.00">person3</text> </g> <!-- person3&#45;&#45;house1_2016 --> <g id="edge6" class="edge">
-<title>
-person3–house1_2016
-</title>
-<path fill="none" stroke="black" d="M158.7,-101.37C161.89,-102.78 165.16,-104.22 168.4,-105.65"></path> </g> <!-- house3_2009 --> <g id="node7" class="node">
-<title>
-house3_2009
-</title>
-<ellipse fill="none" stroke="black" cx="62.54" cy="-54.23" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="62.54" y="-50.03" font-family="Times,serif" font-size="14.00">house3_2009</text> </g> <!-- person3&#45;&#45;house3_2009 --> <g id="edge5" class="edge">
-<title>
-person3–house3_2009
-</title>
-<path fill="none" stroke="black" d="M102.13,-74.51C99.24,-73.03 96.29,-71.52 93.37,-70.02"></path> </g> <!-- person4 --> <g id="node8" class="node">
-<title>
-person4
-</title>
-<ellipse fill="none" stroke="black" cx="264.21" cy="-69.29" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="264.21" y="-65.09" font-family="Times,serif" font-size="14.00">person4</text> </g> <!-- person4&#45;&#45;house1_2016 --> <g id="edge8" class="edge">
-<title>
-person4–house1_2016
-</title>
-<path fill="none" stroke="black" d="M245.07,-85.29C238.16,-91.07 230.32,-97.62 223.29,-103.5"></path> </g> <!-- house4_2008 --> <g id="node9" class="node">
-<title>
-house4_2008
-</title>
-<ellipse fill="none" stroke="black" cx="318.93" cy="-18" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="318.93" y="-13.8" font-family="Times,serif" font-size="14.00">house4_2008</text> </g> <!-- person4&#45;&#45;house4_2008 --> <g id="edge7" class="edge">
-<title>
-person4–house4_2008
-</title>
-<path fill="none" stroke="black" d="M281.82,-52.78C287.7,-47.27 294.26,-41.12 300.22,-35.54"></path> </g> </g>
-</svg>
-</div>
-</div>
-</div>
-</div>
-<p>We end up with owner-home associations - must infer moving choices</p>
-</div>
-</div>
-</section>
-<section id="data-merging-2" class="slide level2">
 <h2>Data: Merging</h2>
 <p>Our sample in this work has the same source datasets, as the first one, but extended to a longer 2009-2018 timeframe.</p>
 <p>These transactions are then merged onto individual demographic data in the HMDA</p>
@@ -1552,9 +1451,9 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 <section id="data-eda" class="slide level2">
 <h2>Data: EDA</h2>
 <div data-fig-align="center">
-<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-4_edd46915f11fe75a648996168a6a0757">
+<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-3_ac870a9ec6008e9186398d21cbbd968d">
 <div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-4-1.png" width="6000"></p>
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-3-1.png" width="6000"></p>
 </div>
 </div>
 </div>
@@ -1562,9 +1461,9 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 <section id="data-eda-1" class="slide level2">
 <h2>Data: EDA</h2>
 <div data-fig-align="center">
-<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-5_9394671d2d7d10e0a0c9df9032b7d4c2">
+<div class="cell" width="80%" data-hash="quarto-pres_cache/revealjs/unnamed-chunk-4_0c9b4165c36c6b344f8f47a83ba2c815">
 <div class="cell-output-display">
-<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-5-1.png" width="6000"></p>
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-4-1.png" width="6000"></p>
 </div>
 </div>
 </div>
@@ -1996,6 +1895,153 @@ X'_{2j,t}\alpha_{x_2}^i = \alpha_{0,1,X_2} +  \displaystyle\displaystyle\sum\lim
 </section>
 <section id="thank-you" class="slide level2">
 <h2>Thank you!</h2>
+</section></section>
+<section>
+<section id="appendix" class="title-slide slide level1 center">
+<h1>Appendix</h1>
+
+</section>
+<section id="data-merging-2" class="slide level2">
+<h2>Data: Merging</h2>
+<h4 id="easier-said-than-done-eg.">Easier said than done… eg.</h4>
+<div class="r-stack">
+<div class="fragment fade-in-then-out">
+<p><img data-src="Moving1.png"></p>
+</div>
+<div class="fragment fade-in-then-out">
+<p><img data-src="mover2.png"></p>
+</div>
+<div class="fragment">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<div>
+<svg width="960" height="480" viewbox="0.00 0.00 389.47 441.16" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" style="; max-width: none; max-height: none; display: block; margin: auto auto auto auto">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 437.16)">
+<title>
+G
+</title>
+<polygon fill="white" stroke="transparent" points="-4,4 -4,-437.16 385.47,-437.16 385.47,4 -4,4"></polygon> <!-- person1 --> <g id="node1" class="node">
+<title>
+person1
+</title>
+<ellipse fill="none" stroke="black" cx="213.62" cy="-199.25" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="213.62" y="-195.05" font-family="Times,serif" font-size="14.00">person1</text> </g> <!-- house1_2016 --> <g id="node2" class="node">
+<title>
+house1_2016
+</title>
+<ellipse fill="none" stroke="black" cx="202.67" cy="-120.74" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="202.67" y="-116.54" font-family="Times,serif" font-size="14.00">house1_2016</text> </g> <!-- person1&#45;&#45;house1_2016 --> <g id="edge1" class="edge">
+<title>
+person1–house1_2016
+</title>
+<path fill="none" stroke="black" d="M211.08,-181.04C209.31,-168.36 206.96,-151.51 205.19,-138.85"></path> </g> <!-- house2_2012 --> <g id="node3" class="node">
+<title>
+house2_2012
+</title>
+<ellipse fill="none" stroke="black" cx="223.67" cy="-273.25" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="223.67" y="-269.05" font-family="Times,serif" font-size="14.00">house2_2012</text> </g> <!-- person1&#45;&#45;house2_2012 --> <g id="edge2" class="edge">
+<title>
+person1–house2_2012
+</title>
+<path fill="none" stroke="black" d="M216.1,-217.55C217.66,-229.02 219.66,-243.74 221.21,-255.17"></path> </g> <!-- person2 --> <g id="node4" class="node">
+<title>
+person2
+</title>
+<ellipse fill="none" stroke="black" cx="233.59" cy="-345.88" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="233.59" y="-341.68" font-family="Times,serif" font-size="14.00">person2</text> </g> <!-- person2&#45;&#45;house2_2012 --> <g id="edge4" class="edge">
+<title>
+person2–house2_2012
+</title>
+<path fill="none" stroke="black" d="M231.09,-327.55C229.57,-316.46 227.65,-302.37 226.14,-291.32"></path> </g> <!-- house1_2011 --> <g id="node5" class="node">
+<title>
+house1_2011
+</title>
+<ellipse fill="none" stroke="black" cx="255.86" cy="-415.16" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="255.86" y="-410.96" font-family="Times,serif" font-size="14.00">house1_2011</text> </g> <!-- person2&#45;&#45;house1_2011 --> <g id="edge3" class="edge">
+<title>
+person2–house1_2011
+</title>
+<path fill="none" stroke="black" d="M239.32,-363.72C242.62,-373.99 246.76,-386.85 250.07,-397.14"></path> </g> <!-- person3 --> <g id="node6" class="node">
+<title>
+person3
+</title>
+<ellipse fill="none" stroke="black" cx="129.27" cy="-88.41" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="129.27" y="-84.21" font-family="Times,serif" font-size="14.00">person3</text> </g> <!-- person3&#45;&#45;house1_2016 --> <g id="edge6" class="edge">
+<title>
+person3–house1_2016
+</title>
+<path fill="none" stroke="black" d="M158.7,-101.37C161.89,-102.78 165.16,-104.22 168.4,-105.65"></path> </g> <!-- house3_2009 --> <g id="node7" class="node">
+<title>
+house3_2009
+</title>
+<ellipse fill="none" stroke="black" cx="62.54" cy="-54.23" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="62.54" y="-50.03" font-family="Times,serif" font-size="14.00">house3_2009</text> </g> <!-- person3&#45;&#45;house3_2009 --> <g id="edge5" class="edge">
+<title>
+person3–house3_2009
+</title>
+<path fill="none" stroke="black" d="M102.13,-74.51C99.24,-73.03 96.29,-71.52 93.37,-70.02"></path> </g> <!-- person4 --> <g id="node8" class="node">
+<title>
+person4
+</title>
+<ellipse fill="none" stroke="black" cx="264.21" cy="-69.29" rx="41.72" ry="18"></ellipse> <text text-anchor="middle" x="264.21" y="-65.09" font-family="Times,serif" font-size="14.00">person4</text> </g> <!-- person4&#45;&#45;house1_2016 --> <g id="edge8" class="edge">
+<title>
+person4–house1_2016
+</title>
+<path fill="none" stroke="black" d="M245.07,-85.29C238.16,-91.07 230.32,-97.62 223.29,-103.5"></path> </g> <!-- house4_2008 --> <g id="node9" class="node">
+<title>
+house4_2008
+</title>
+<ellipse fill="none" stroke="black" cx="318.93" cy="-18" rx="62.57" ry="18"></ellipse> <text text-anchor="middle" x="318.93" y="-13.8" font-family="Times,serif" font-size="14.00">house4_2008</text> </g> <!-- person4&#45;&#45;house4_2008 --> <g id="edge7" class="edge">
+<title>
+person4–house4_2008
+</title>
+<path fill="none" stroke="black" d="M281.82,-52.78C287.7,-47.27 294.26,-41.12 300.22,-35.54"></path> </g> </g>
+</svg>
+</div>
+</div>
+</div>
+</div>
+<p>We end up with owner-home associations - must infer moving choices</p>
+</div>
+</div>
+</section>
+<section id="identification---fmc-endogeneity" class="slide level2">
+<h2>Identification - FMC Endogeneity</h2>
+<div data-fig-align="center">
+<div class="cell" width="70%">
+<div class="cell-output-display">
+<p><img data-src="quarto-pres_files/figure-revealjs/unnamed-chunk-6-1.png" width="960"></p>
+</div>
+</div>
+<p>[OVB: Omitted Variable of Concern], [Price_o: Price of Origin Home], [Price_c: Price of Focal Home]</p>
+</div>
+</section>
+<section id="identification---fmc-endogeneity-may-remove-this" class="slide level2">
+<h2>Identification - FMC Endogeneity (may remove this)</h2>
+<p><br></p>
+<p>In this case, we can use the <span class="hi-slate">Front Door Criterion</span> <span class="small-font">(Pearl, 1995; Bellemare, Bloem, Wexler, 2020)</span> to identify the effect of FMC → Choice.</p>
+<ul>
+<li><span class="hi-slate">Idea</span>: A Front-door identified causal effect is in many ways an ‘anti-instrument’:
+<ul>
+<li>Rather than identify a portion of our variable’s information that is causal, we want to see how FMC changes the probability of moving, and then use THAT variation to identify the causal effect</li>
+</ul></li>
+</ul>
+<p><span class="hi">Intuition</span>: Decompose problem into two solvable ones: marginal effect of FMC on stay probability and marginal effect of stay on final choice.</p>
+</section>
+<section id="identification---fmc-endogeneity-may-remove-this-1" class="slide level2">
+<h2>Identification - FMC Endogeneity (may remove this)</h2>
+<p><br></p>
+<p><strong>Assumptions</strong></p>
+<p>Given the decision to move, FMC does not change the choice made</p>
+<p>Aside from the direct route, the decision to move is not associated with FMC (no backdoor path from move to FMC)</p>
+<p>Given FMC, there is no backdoor path from the decision to move to the location chosen.</p>
+</section>
+<section id="identification---fmc-endogeneity-1" class="slide level2">
+<h2>Identification - FMC Endogeneity</h2>
+<p>If met, then,</p>
+<p>Step 1. Estimate <span class="math inline">\(P(Move|FMC)\)</span> - Logistic regression/classifier</p>
+<p>Step 2. Estimate <span class="math inline">\(P(Choice|Move,FMC)\)</span> - multinomial logit/classifier</p>
+<p>Step 3. Combine: as simple as the coefficient in 1 times average utility or probability of each choice for movers</p>
+<div class="fragment fade-in small-font">
+<p><span class="math display">\[Causal\ Estimand =P(Move|FMC)*P(Choice|Move,FMC)\]</span></p>
+<p><span class="math display">\[=P(Stay|FMC)*P(Choice = Stay|Move = 0,FMC) + \\
+P(Move = 1|FMC)*P(Choice|Move = 1,FMC)\]</span></p>
+<p><span class="math display">\[=P(Stay|FMC)*1[Move = 0] + \\ P(Move|FMC)*P(Choice|Move = 1,FMC)*1[Move = 1]\]</span> Importantly - <span class="math inline">\(Choice\)</span> in this case can represent either the choice itself, as above, or the <em>Utility</em> of that choice.</p>
+</div>
 </section>
 <section id="references" class="slide level2">
 <h2>References</h2>
